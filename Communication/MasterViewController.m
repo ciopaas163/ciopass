@@ -236,7 +236,7 @@
 {
     if ([tableView isEqual:self.tableView]) {
     NSMutableArray *indices = [NSMutableArray arrayWithObject:UITableViewIndexSearch];
-    for (int i = 0; i < 27; i++) 
+    for (int i = 0; i < 27; i++)
             [indices addObject:[[ALPHA substringFromIndex:i] substringToIndex:1]];
     //[indices addObject:@"\ue057"]; // <-- using emoji
     return indices;
@@ -245,12 +245,11 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
 {
-    if (title == UITableViewIndexSearch) 
+    if (title == UITableViewIndexSearch)
 	{
 		[self.tableView scrollRectToVisible:self.searchDisplayController.searchBar.frame animated:NO];
 		return -1;
 	}
-
    return  [ALPHA rangeOfString:title].location;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
