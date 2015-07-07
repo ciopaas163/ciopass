@@ -146,7 +146,7 @@
 
         [self.navigationController pushViewController:master animated:YES];
 
-           }
+    }
 }
 
 
