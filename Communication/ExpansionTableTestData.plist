@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>list</key>
+		<array>
+			<string>请前往网址 http://open.ciopass.com/Admin/Register/index 进行企业用户注册</string>
+		</array>
+		<key>name</key>
+		<string>如何注册企业账号?</string>
+	</dict>
+	<dict>
+		<key>list</key>
+		<array>
+			<string>请在Web后台企业管理-组织结构管理中添加员工</string>
+		</array>
+		<key>name</key>
+		<string>如何添加组织机构里的联系人?</string>
+	</dict>
+	<dict>
+		<key>list</key>
+		<array>
+			<string>请在个人通讯录界面右上角点击添加个人，或者在手机通讯录中选择联系人点击右上角导入选择导入个人通讯录</string>
+		</array>
+		<key>name</key>
+		<string>如何添加个人通讯录?</string>
+	</dict>
+</array>
+</plist>

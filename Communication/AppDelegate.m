@@ -17,6 +17,32 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
+//    CTCallCenter *callCenter = [[CTCallCenter alloc] init];
+//    callCenter.callEventHandler = ^(CTCall* call) {
+//        if ([call.callState isEqualToString:CTCallStateDisconnected])
+//        {
+//            NSLog(@"Call has been disconnected");
+//        }
+//        else if ([call.callState isEqualToString:CTCallStateConnected])
+//        {
+//            NSLog(@"Call has just been connected");
+//        }
+//        else if([call.callState isEqualToString:CTCallStateIncoming])
+//        {
+//            NSLog(@"Call is incoming");
+//        }
+//        else if ([call.callState isEqualToString:CTCallStateDialing])
+//        {
+//            NSLog(@"call is dialing");
+//        }
+//        else
+//        {
+//            NSLog(@"Nothing is done");
+//        }
+//    };
+    
     return YES;
 }
 
