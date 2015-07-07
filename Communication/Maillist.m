@@ -35,6 +35,7 @@
     _tableView.contentSize = CGSizeMake(0, _tableView.bounds.size.height + 1);
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    
     [self.view addSubview:_tableView];
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"设置.png"] style:UIBarButtonItemStylePlain target:self action:@selector(perFormSetup:)];
