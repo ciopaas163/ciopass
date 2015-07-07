@@ -55,12 +55,12 @@
     _tableView.contentSize = CGSizeMake(0, _tableView.bounds.size.height + 1);
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    if ([_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+    /*if ([_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [_tableView setSeparatorInset: UIEdgeInsetsZero];
     }
     if ([_tableView respondsToSelector:@selector(setLayoutMargins:)]) {
         [_tableView setLayoutMargins: UIEdgeInsetsZero];
-    }
+    }*/
     [self.view addSubview:_tableView];
 
     [self setExtraCellLineHidden:_tableView];
