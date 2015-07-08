@@ -747,6 +747,7 @@
 		3BDE47641A9FF584001901A5 /* Communication */ = {
 			isa = PBXGroup;
 			children = (
+				F84745141B4CAC510059B561 /* 沟通 */,
 				3BE254701AA98947000DB5DF /* 数据 */,
 				3BDE47931A9FF5E1001901A5 /* 日历 */,
 				3BDE47921A9FF5D7001901A5 /* 拨号 */,
@@ -1586,6 +1587,13 @@
 				F83FFDDB1AA0580000095EB8 /* 选中.png */,
 			);
 			path = "导入通讯录图标";
+			sourceTree = "<group>";
+		};
+		F84745141B4CAC510059B561 /* 沟通 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "沟通";
 			sourceTree = "<group>";
 		};
 		F896CC1F1AA4611900E7ED30 /* fmdb */ = {
