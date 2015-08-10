@@ -7,7 +7,7 @@
 //
 
 #import "EnterpriseController.h"
-#import "Personal.h"                 //个人通讯助手
+#import "PersonalViewController.h"                 //个人通讯助手
 #import "SetupController.h"
 #import "OrganizationController.h"   //组织构架
 #import "CustomerController.h"       //客户通讯录
@@ -17,7 +17,9 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "DatabaseModel.h"
 #import "Database.h"     //数据库的类
-
+#import "PublicAction.h"
+#define KSCREENWIDTH  [[UIScreen mainScreen] bounds].size.width
+#define KSCRENHEIGHT [[UIScreen mainScreen] bounds].size.height
 
 @interface EnterpriseController ()
 
@@ -25,6 +27,25 @@
 @end
 
 @implementation EnterpriseController
+
+-(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self=[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        UITextField * field=[[UITextField alloc]initWithFrame:CGRectMake(0, 0, KSCREENWIDTH, 25)];
+        field.text=@"通信助手";
+        field.textColor=[UIColor whiteColor];
+        field.textAlignment = NSTextAlignmentCenter;
+        field.font = [UIFont boldSystemFontOfSize:17];
+        field.enabled =NO;
+        self.navigationItem.titleView=field;
+        //UIImage *image=[UIImage imageNamed:@"com_ttshrk_view_scroll_picker_bar.png"];
+        //[self.tabBarController.tabBar setBackgroundImage:image];
+        //self.tabBarController.tabBar.opaque = YES;
+        
+    }
+    return self;
+}
 
 -(void)viewWillAppear:(BOOL)animated{
 
@@ -37,17 +58,11 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"通讯助手";
     
-
-//    self.view.backgroundColor = [UIColor colorWithRed:241.0/255.0 green:241.0/255.0 blue:241.0/255.0 alpha:1];
     //创建一个导航栏
     _navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
     //创建一个导航栏集合
     _navItem = [[UINavigationItem alloc] initWithTitle:nil];
     [self.view addSubview:_navBar];
-    //在这个集合Item中添加标题，按钮
-    //style:设置按钮的风格，一共有三种选择
-    //创建一个左边按钮
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"设置.png"] style:UIBarButtonItemStylePlain target:self action:@selector(perFormSetup:)];
 
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, _navBar.frame.origin.y + _navBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - 110)];
     _tableView.backgroundColor =  [UIColor colorWithRed:241.0/255.0 green:241.0/255.0 blue:241.0/255.0 alpha:1];
@@ -55,15 +70,37 @@
     _tableView.contentSize = CGSizeMake(0, _tableView.bounds.size.height + 1);
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    /*if ([_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-        [_tableView setSeparatorInset: UIEdgeInsetsZero];
-    }
-    if ([_tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-        [_tableView setLayoutMargins: UIEdgeInsetsZero];
-    }*/
     [self.view addSubview:_tableView];
 
     [self setExtraCellLineHidden:_tableView];
+    
+    [PublicAction tableViewCenter:_tableView];
+    
+    sectionDic=[[NSMutableDictionary alloc]initWithCapacity:10];
+    NSMutableArray * dict1;
+    NSMutableArray * dict2;
+    
+    NSUserDefaults * users=[NSUserDefaults standardUserDefaults];
+    NSString * usertype=[users objectForKey:@"userType"];
+    if ([usertype isEqual:@"3"])
+    {
+        
+        dict1=[[NSMutableArray alloc]initWithObjects:[NSArray arrayWithObjects:@"个人通讯录",@"personal-contact@2x.png",@"3", nil], nil];
+        dict2=[[NSMutableArray alloc]initWithObjects:[NSArray arrayWithObjects:@"手机通讯录",@"mobile-contact@2x.png",@"4", nil], nil];
+        //[NSArray arrayWithObjects:@"短信助手",@"message-helper@2x.png",@"5", nil]
+    }else
+    {
+        
+        dict1=[[NSMutableArray alloc]initWithObjects:[NSArray arrayWithObjects:@"公司团队",@"organization@2x.png",@"1", nil],[NSArray arrayWithObjects:@"客户通讯录",@"Customer@2x.png",@"2", nil],[NSArray arrayWithObjects:@"个人通讯录",@"personal-contact@2x.png",@"3", nil], nil];
+        dict2=[[NSMutableArray alloc]initWithObjects:[NSArray arrayWithObjects:@"手机通讯录",@"mobile-contact@2x.png",@"4", nil], nil];
+        
+    }
+    
+    if (sectionDic)
+    {
+        [sectionDic setValue:dict1 forKey:@"aFirst"];
+        [sectionDic setValue:dict2 forKey:@"bSecond"];
+    }
 }
 #pragma mark  清除UITableView底部多余的分割线
 -(void)setExtraCellLineHidden: (UITableView *)tableView
@@ -77,7 +114,6 @@
 
 #pragma mark  --- 设置按钮
 -(void)perFormSetup:(UISegmentedControl*)Setup{
-    NSLog(@"Setup:设置");
     SetupController* sevc = [[SetupController alloc] init];
     UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:sevc];
     [self.navigationController presentViewController:nav animated:YES completion:nil];
@@ -85,12 +121,13 @@
 
 #pragma  UITableView
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    NSArray * arr=[sectionDic objectForKey: [[[sectionDic allKeys] sortedArrayUsingSelector:@selector(compare:)] objectAtIndex:section]];
+    return arr.count;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 6;
+    return sectionDic.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 50;
@@ -98,7 +135,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
 
-    return 0;
+    return 5;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -107,96 +144,85 @@
     if (tableCell==nil) {
         tableCell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Cell];
     }
-
     UIImageView * imageNumber = [[UIImageView alloc]initWithFrame:CGRectMake(0, 5, 65, 40)];
     UILabel* textLabel = [[UILabel alloc] initWithFrame:CGRectMake(imageNumber.frame.origin.x + imageNumber.frame.size.width, imageNumber.frame.origin.y, 100, imageNumber.frame.size.height)];
-    if (indexPath.section==0) {
-
-        imageNumber.image = [UIImage imageNamed:@"organization@2x.png"];
-        textLabel.text = @"组织构架";
-
-    }
-    else if (indexPath.section==1){
-        imageNumber.image = [UIImage imageNamed:@"Customer@2x.png"];
-        textLabel.text = @"客户通讯录";
-
-    }  else if (indexPath.section==2){
-
-        imageNumber.image = [UIImage imageNamed:@"personal-contact@2x.png"];
-        textLabel.text = @"个人通讯录";
-
-    }  else if (indexPath.section==3){
-
-        imageNumber.image = [UIImage imageNamed:@"mobile-contact@2x.png"];
-        textLabel.text = @"手机通讯录";
-
-    }  else if (indexPath.section==4){
-
-        imageNumber.image = [UIImage imageNamed:@"message-helper@2x.png"];
-        textLabel.text = @"短信助手";
-
-    } else if (indexPath.section==5){
-
-        imageNumber.image = [UIImage imageNamed:@"more@2x.png"];
-
-         textLabel.text = @"更多";
-
-    }
+    NSArray * keys=[[sectionDic allKeys] sortedArrayUsingSelector:@selector(compare:)];
+    NSArray * tableData=[sectionDic objectForKey:keys[indexPath.section]];
+    NSArray * data=[tableData objectAtIndex:indexPath.row];
+    imageNumber.image=[UIImage imageNamed:[data objectAtIndex:1]];
+    textLabel.text=[data objectAtIndex:0];
+    
+    
     [tableCell.contentView addSubview:imageNumber];
     [tableCell.contentView addSubview:textLabel];
     tableCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
     return tableCell;
 }
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+
+{
+    
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+        
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+        
+    }
+    
+}
+
 #pragma mark 【 组织构架  客户通讯录 个人通讯录 手机通讯录 短信助手 更多 】
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    if (indexPath.section == 0) {
-        NSLog(@"组织构架");
-        
+    NSArray * keys=[[sectionDic allKeys] sortedArrayUsingSelector:@selector(compare:)];
+    NSArray * tableData=[sectionDic objectForKey:keys[indexPath.section]];
+    NSArray * data=[tableData objectAtIndex:indexPath.row];
+    NSInteger mark=[[data objectAtIndex:2] integerValue];
+    if (mark == 1) {
         OrganizationController* organ = [[OrganizationController alloc] init];
          organ.hidesBottomBarWhenPushed  = YES;  //隐藏定义的卡片兰
 
         [self.navigationController pushViewController:organ animated:YES];
         
-    }else if (indexPath.section == 1){
-        NSLog(@"客户通讯录");
+    }else if (mark == 2){
         
         CustomerController* custome = [[CustomerController alloc] init];
         custome.hidesBottomBarWhenPushed  = YES;  //隐藏定义的卡片兰
         
         [self.navigationController pushViewController:custome animated:YES ];
         
-    }else if (indexPath.section == 2) {
-        NSLog(@"个人通讯录");
+    }else if (mark == 3) {
         
-        Personal* personal = [[Personal alloc] init];
-
-        [self PersonalURL];
+        PersonalViewController* personal = [[PersonalViewController alloc] init];
+        personal.hidesBottomBarWhenPushed=YES;
+        //[self PersonalURL];
 
         [self.navigationController pushViewController:personal animated:YES];
 
 
-    }else if (indexPath.section == 3){
-        NSLog(@"手机通讯录");
+    }else if (mark == 4){
 
         MasterViewController* master = [[MasterViewController alloc] init];
         master.hidesBottomBarWhenPushed  = YES;  //隐藏定义的卡片兰
-        ABNewPersonViewController *picker = [[ABNewPersonViewController alloc] init];
-        picker.newPersonViewDelegate = self;
+        //ABNewPersonViewController *picker = [[ABNewPersonViewController alloc] init];
+        //picker.newPersonViewDelegate = self;
         [self.navigationController pushViewController:master animated:YES];
 
-    }else if (indexPath.section == 4){
-
-        NSLog(@"短信助手");
+    }else if (mark == 5){
 
 //        Shortmessage* message = [[Shortmessage alloc] init];
 //        [self.navigationController pushViewController:message animated:YES];
 
         [self alertView];
 
-    }else if (indexPath.section == 5){
-        NSLog(@"更多");
+    }else if (mark == 6){
 
 //        MoreViewController * more = [[MoreViewController alloc]init];
 //        [self.navigationController pushViewController:more animated:YES];
@@ -204,6 +230,7 @@
         [self alertView];
 
     }
+    [_tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 #pragma mark 获取通讯录
 #pragma mark ABPeoplePickerNavigationControllerDelegate methods
@@ -254,129 +281,6 @@
         [alert dismissWithClickedButtonIndex:[alert cancelButtonIndex] animated:YES];
     }
 }
-#pragma mark  === [网络请求  -- 组织构架]
--(void)enterpriseURL{
-//   管理器
-    AFHTTPRequestOperationManager* manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer = [AFXMLParserResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *_id = [defaults objectForKey:@"nid"];
-    NSString* eid = [defaults objectForKey:@"eid"];
-    NSString* verify = [defaults objectForKey:@"verify"];
-    NSString* auchCode = [defaults objectForKey:@"auchCode"];
-    NSString* timestamp = [defaults objectForKey:@"timestamp"];
-
-    
-    NSLog(@"%@,%@,%@,%@,%@",_id,eid,verify,auchCode,timestamp);
-    //    设置参数
-    NSDictionary* dict = @{@"id":_id,@"verify":verify,@"eid":eid,@"auchCode":auchCode,@"timestamp":timestamp};
-    
-//    请求
-    [manager GET:@"http://open.ciopaas.com/Admin/Info/get_EnterpriseArchitecture?" parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        NSLog(@"get:%@",operation.responseString);
-        NSError* error = nil ;
-        NSDictionary* dicti = [NSJSONSerialization JSONObjectWithData:[operation.responseString dataUsingEncoding:NSUTF8StringEncoding]  options:0 error:&error];
-        if (error) {
-
-        }else{
-            
-            NSMutableArray *array = [NSMutableArray array];
-            NSArray *organiza = [dicti objectForKey:@"OrganizationalStructure"];
-            for (NSDictionary *content in organiza) {
-                DatabaseModel *model = [[DatabaseModel alloc] init];
-                model._id = [content objectForKey:@"id"];
-                model.pid = [content objectForKey:@"pid"];
-                model.departmentname = [content objectForKey:@"departmentname"];
-                model.eid = [content objectForKey:@"eid"];
-                model.ctime = [content objectForKey:@"ctime"];
-                
-                Database *db = [Database sharDatabase];
-                
-                NSString*searchSql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = '%@'",@"ID_Enterprise",@"_id",model._id];//从ID_Enterprise表里面读取_id列的值为model._id的这一行的数据
-                
-                BOOL isExists = NO;
-                if ([db.datadb open]) {
-                    
-                    FMResultSet *result = [db.datadb executeQuery:searchSql];//查询searchSql里的model._id;
-                    
-                    while ([result next]) { //遍历这个表里的每一列
-                        NSString *_id = [result stringForColumn:@"_id"]; //查询到列里的："_id"
-                        
-                        if ([_id isEqualToString:model._id]) {
-                            
-                            isExists = YES;
-                            
-                            break;
-                        }
-                    }
-                    
-                    [db.datadb close]; //关闭表
-                }
-//                NSLog(@"result %d",isExists);
-                if (isExists) {//判断存在  此时isExists 为YES   【存在 就更新】
-                    NSString *updateSql = [NSString stringWithFormat:@"UPDATE %@ SET %@ = '%@',%@ = '%@', %@ ='%@',%@ = '%@' WHERE %@ = '%@'",@"ID_Enterprise",@"pid",model.pid,@"departmentname",model.departmentname,@"eid",model.eid,@"ctime",model.ctime,@"_id",model._id];
-                    if ([db.datadb open]) {//打开表
-                        
-                        [db.datadb executeUpdate:updateSql];//更新updateSql表的内容
-
-                        //        通过fmdb读取.db文件中得数据
-//                        NSMutableArray*  _idArrayLength=[db stringForQuery:@"SELECT departmentname FROM ID_name",model.departmentname];
-
-                        [db.datadb close];
-                    }
-                }else{//否则就添加数据
-                    NSString* inserSQL = [NSString stringWithFormat:@"INSERT INTO %@ (_id, pid, departmentname,eid,  ctime) VALUES ('%@','%@','%@','%@','%@')",@"ID_Enterprise",model._id,model.pid,model.departmentname,model.eid,model.ctime];
-                    [db saveSql:inserSQL]; //把数据保存到数据库的@"ID_Enterprise"表里
-                    //        通过fmdb读取.db文件中得数据
-//                    NSMutableArray*  _idArrayLength=[db stringForQuery:@"SELECT departmentname FROM ID_Enterprise",model.departmentname];
-
-
-                }
-                _arrarNSstr = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = '%@'",@"ID_Enterprise",@"departmentname",model.departmentname];
-                NSLog(@"^^departmentname^^:%@",_arrarNSstr);
-
-            }
-            
-        }
-
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        NSLog(@"~~~~get:%@",error);
-        
-    }];
-
-#pragma mark ====【 保存到本地数据库   == 组织架构 】
-    
-    Database * db = [Database sharDatabase];
-    NSLog(@"数据DB:%@",db);
-//    设置表名：
-    NSString* TableName = @"ID_Enterprise";
-//    设置表名的标题
-    NSString *create = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (_id text, pid TEXT, departmentname TEXT, eid TEXT, ctime TEXT)",TableName];
-
-//    创建表的方法   【创建数据库的操作】
-    [db creatDatabase:create];
-    
-//    读数据库的表
-    NSString *readSql = [NSString stringWithFormat:@"SELECT * FROM %@",TableName];
-
-    FMResultSet* resuet = [db readSql:readSql];
-    while ([resuet next]) {
-        /*
-        NSLog(@"~~@@~~:%@\n",[resuet stringForColumn:@"_id"]);
-        NSLog(@"~~@@~~:%@\n",[resuet stringForColumn:@"pid"]);
-        NSLog(@"~~@@~~:%@\n",[resuet stringForColumn:@"departmentname"]);
-        NSLog(@"~~@@~~:%@\n",[resuet stringForColumn:@"eid"]);
-        NSLog(@"~~@@~~:%@\n",[resuet stringForColumn:@"ctime"]);
-   */
-         }
-    
-//    关闭表
-    [db.datadb close];
-}
 #pragma mark  === [网络请求  -- 个人通讯录]
 -(void)PersonalURL{
     //管理器
@@ -391,14 +295,12 @@
     NSString* verify = [defaulte objectForKey:@"verify"];
     NSString* usertype = [defaulte objectForKey:@"usertype"];
     NSString* timestamp = [defaulte objectForKey:@"timestamp"];
-    NSLog(@"~~~个人通讯录:_id:%@,verify:%@,usertype:%@,timestamp:%@",_id,verify,usertype,timestamp);
 //    设置参数
     NSDictionary* dicts2 = @{@"id":_id,@"verify":verify,@"usertype":usertype,@"timestamp":timestamp};
 //   发送请求
     [manager GET:@"http://open.ciopaas.com/Admin/Info/get_personal_group?" parameters:dicts2 success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"~~个人信息get:%@",operation.responseString);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"~~~GET:%@",error);
+
     }];
 
 }
@@ -408,14 +310,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
