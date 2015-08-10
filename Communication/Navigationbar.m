@@ -91,14 +91,12 @@
 }
 #pragma mark 按钮
 -(void)clickLeftButton:(UIBarButtonItem*)leftbutton{
-    NSLog(@"返回");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark button
 -(void)buttonMonitor:(UIButton*)monitor{
     if (monitor.tag == 31) {
-        NSLog(@"获取验证码");
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"验证码已发送" message:nil
                                                        delegate:self cancelButtonTitle:nil
                                               otherButtonTitles: nil];
