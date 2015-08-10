@@ -23,7 +23,7 @@
 @end
 
 @implementation CalendarcomViewController
-
+/*
 -(void)viewWillAppear:(BOOL)animated
 {
     Database *db = [Database sharDatabase];
@@ -123,7 +123,7 @@
 
     return cell;
 }
-
+*/
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 60;
