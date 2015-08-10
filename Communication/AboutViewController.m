@@ -48,7 +48,6 @@
 }
 #pragma mark 返回
 -(void)leftButtonClick:(UIButton*)backButton{
-    NSLog(@"返回");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 #pragma mark 导航
@@ -159,7 +158,6 @@
 #pragma mark 按钮
 -(void)clickButton:(UIBarButtonItem*)leftbutton
 {
-    NSLog(@"返回");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)didReceiveMemoryWarning {
