@@ -7,11 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CalendarKit/CalendarKit.h"
 @interface TabBarController : UITabBarController
 {
     UINavigationController* _nav1;
 
 }
-@property (strong, nonatomic) CKCalendarViewController *viewController;
 @end

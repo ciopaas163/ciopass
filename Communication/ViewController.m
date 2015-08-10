@@ -13,7 +13,6 @@
 #import "TabBarController.h"
 #import "SGInfoAlert.h"
 #import "MBProgressHUD.h"
-#import "TabBarGeRenViewController.h"
 
 #define KSCREENWIDTH  [[UIScreen mainScreen] bounds].size.width
 #define KSCRENHEIGHT [[UIScreen mainScreen] bounds].size.height
@@ -34,6 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"%@",NSHomeDirectory());
     // Do any additional setup after loading the view, typically from a nib.
     data_ = [[NSMutableData alloc]init];
     self.view.backgroundColor = [UIColor colorWithRed:241.0/255.0 green:241.0/255.0 blue:241.0/255.0 alpha:1];
@@ -136,12 +136,10 @@
     [passwordTextFiled resignFirstResponder];
     switch (event.tag) {
         case 10:{
-            NSLog(@"登录监听OK");
             [self userequest];
             break;
         }
         case 11:{
-            NSLog(@"注册账号监听OK");
             RegistrationController* regContorller = [[RegistrationController alloc] init];
             //            self.navigationController.navigationBarHidden = NO;
             UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:regContorller];
@@ -149,7 +147,6 @@
             break;
         }
         case 12:{
-            NSLog(@"忘记密码监听OK");
             CipherViewController* cipher = [[CipherViewController alloc]init];
             UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:cipher];
             [self presentViewController:nvc animated:YES completion:nil];
@@ -174,6 +171,7 @@
     NSURLRequest *request = [[NSURLRequest alloc]initWithURL:url];
     [NSURLConnection connectionWithRequest:request delegate:self];
     
+    
 }
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
@@ -189,27 +187,22 @@
 {
     NSError *error;
     NSDictionary *array = [NSJSONSerialization JSONObjectWithData:data_ options:NSJSONReadingMutableLeaves error:&error];
-    NSLog(@"array-%@",array);
+    //NSLog(@"%@+%d",array,array.count);
     NSString *resultw =[NSString stringWithFormat:@"%@",[array objectForKey:@"code"]];
     NSString *resulterr = @"1";
     NSString *GerenStr =[NSString stringWithFormat:@"%@",[array objectForKey:@"usertype"]];
     NSString *GeStr = @"3";
-    
-    NSString *userid;
-    NSString *nid;
-    NSString *eid;
-    NSString *verify;
-    
-    for (NSInteger i=0; i<[array count]; i++) {
-        userid = array[@"userid"];
-        nid = array[@"id"];
-        eid = array[@"eid"];
-        verify = array[@"verify"];
-    }
+    NSString *userid=[array objectForKey:@"userId"];
+    NSString *nid=[array objectForKey:@"id"];
+    NSString *eid=[array objectForKey:@"eid"];
+    NSString *verify=[array objectForKey:@"verify"];
+    NSString * auchCode=[array objectForKey:@"auchCode"];
     [userDefaults setObject:userid forKey:@"userid"];
     [userDefaults setObject:nid forKey:@"nid"];
     [userDefaults setObject:eid forKey:@"eid"];
     [userDefaults setObject:verify forKey:@"verify"];
+    [userDefaults setObject:auchCode forKey:@"auchCode"];
+    [userDefaults setObject:GerenStr forKey:@"userType"];
     
     [MBProgressHUD hideAllHUDsForView:self.contentScrollView animated:YES];
     if([resultw isEqualToString:resulterr])
@@ -229,14 +222,15 @@
         [userDefaults setObject:passwordTextFiled.text forKey:@"Password"];
         
         AppDelegate* app = (AppDelegate*)[UIApplication sharedApplication].delegate;
-        if ([GerenStr isEqualToString:GeStr])
+        app.window.rootViewController = [[TabBarController alloc]init];
+        /*if ([GerenStr isEqualToString:GeStr])
         {
             app.window.rootViewController = [[TabBarGeRenViewController alloc]init];
         }
         else
         {
-            app.window.rootViewController = [[TabBarController alloc]init];
-        }
+            
+        }*/
     }
     
 }
