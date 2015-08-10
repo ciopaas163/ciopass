@@ -10,15 +10,14 @@
 
 #import "DatabaseModel.h"
 @interface EnterpriseCell : UITableViewCell
-{
-    UIImageView* _imgBiao;
+@property(strong, nonatomic) NSString * model;
+@property(strong,nonatomic)NSString * umodel;
+@property(strong,nonatomic)NSString * text;
+@property(strong,nonatomic)UIImageView* _imgBiao;
+@property(strong, nonatomic)UILabel* _textLabel;
 
-    UILabel* _textLabel;
-    UILabel* _tetLabel;
-}
-
-@property(strong, nonatomic)DatabaseModel* model;
-
-//@property(strong, nonatomic)KeHuModel* kehumodel;
+@property(strong, nonatomic)UILabel* _tetLabel;
+@property(strong, nonatomic)UILabel *_tet;
 
 @end
+

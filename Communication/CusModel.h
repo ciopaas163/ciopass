@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString *uid;
 @property (nonatomic, strong) NSString *groupname;
 @property (nonatomic, strong) NSString *ctime;
+@property (nonatomic, assign) NSInteger status;
 
 
 @end

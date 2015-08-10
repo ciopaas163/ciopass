@@ -1,20 +1,18 @@
 //
-//  CustomerCell.m
+//  CusInfoCell.m
 //  Communication
 //
-//  Created by CIO on 15/3/5.
+//  Created by helloworld on 15/7/21.
 //  Copyright (c) 2015年 JL. All rights reserved.
 //
 
-#import "CustomerCell.h"
+#import "CusInfoCell.h"
 #import "IphoneController.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import "PublicAction.h"
-#import "AppDelegate.h"
-#define KSCREENWIDTH  [[UIScreen mainScreen] bounds].size.width
-@implementation CustomerCell
-@synthesize _imgBiao,_textLabel,_telImage;
-
+#import "Header.h"
+@implementation CusInfoCell
+@synthesize _textLabel,_tetLabel,_telImage;
 - (void)awakeFromNib {
     // Initialization code
 }
@@ -24,48 +22,61 @@
 
     // Configure the view for the selected state
 }
--(void)setModel:(CusModel *)model{
-    if (_model != model) {
-        _model = model;
-        _textLabel.text = model.groupname;
-    }
-    
-}
--(void)setTelphoneNum:(NSString *)telphoneNum
-{
-    if (_telphoneNum!=telphoneNum) {
-        _telphoneNum=telphoneNum;
-    }
-}
--(void)setTextstr:(NSString *)textstr
-{
-    if (_textstr!=textstr) {
-        _textstr=textstr;
-        _textLabel.text=textstr;
-    }
-}
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    if (self == [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self content];
     }
     return self;
 }
--(void)content{
-    _imgBiao = [[UIImageView alloc]initWithFrame:CGRectMake(10, 12.5, 25, 25)];
-    _imgBiao.backgroundColor = [UIColor clearColor];
-    _imgBiao.tintColor=[UIColor blueColor];
-    [self.contentView addSubview:_imgBiao];
+
+
+-(void)setModel:(CustomerModel *)model
+{
+    if (_model!=model) {
+        _model=model;
+        _textLabel.text=model.name;
+        //_tetLabel.text=model;
+    }
+}
+
+-(void)setTitle:(NSString *)str
+{
+    if (_title!=str) {
+        _title=str;
+        _textLabel.text=str;
+    }
+}
+
+-(void)setSubtitle:(NSString *)subtitle
+{
+    if (_subtitle!=subtitle) {
+        _subtitle=subtitle;
+        _tetLabel.text=subtitle;
+    }
+}
+
+- (void)content{
     
-    _textLabel= [[UILabel alloc]initWithFrame:CGRectMake(_imgBiao.frame.origin.x + _imgBiao.frame.size.width, _imgBiao.frame.origin.y, 120, _imgBiao.frame.size.height)];
+    _textLabel= [[UILabel alloc]initWithFrame:CGRectMake(10,2.5,68,30)];
     _textLabel.textAlignment = NSTextAlignmentLeft;
+    //_textLabel.font=[UIFont systemFontOfSize:14];
     [self.contentView addSubview:_textLabel];
-    
-    _telImage=[[UIButton alloc]initWithFrame:CGRectMake(self.frame.size.width-80, 5, 30, 30)];
+    _tetLabel= [[UITextField alloc]initWithFrame:CGRectMake(_textLabel.frame.origin.x+_textLabel.frame.size.width-10,_textLabel.frame.origin.y,self.frame.size.width-(_textLabel.frame.origin.x+_textLabel.frame.size.width),30)];
+    _tetLabel.textAlignment = NSTextAlignmentLeft;
+    _tetLabel.enabled=NO;
+    [self.contentView addSubview:_tetLabel];
+    _telImage=[[UIButton alloc]initWithFrame:CGRectMake(self.frame.size.width-80, 2.5, 30, 30)];
+    _telImage.hidden=YES;
     [_telImage setImage:[UIImage imageNamed:@"dial_normal.png"] forState:UIControlStateNormal];
     [_telImage setImage:[UIImage imageNamed:@"dial_down.png"] forState:UIControlStateHighlighted];
     [_telImage addTarget:self action:@selector(photoTapped) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_telImage];
+    UIView * view=[[UIView alloc]initWithFrame:CGRectMake(0, 34, self.frame.size.width, 1)];
+    view.backgroundColor=COLOR(241.0, 241.0, 241.0, 1);
+    [self.contentView addSubview:view];
 }
+
 -(void)photoTapped
 {
     if (self.telphoneNum.length<7) {
@@ -90,5 +101,4 @@
         [PublicAction dialTelephone:dict];
     });
 }
-
 @end

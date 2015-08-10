@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "CusModel.h"
 @interface CustomerCell : UITableViewCell
-{
-    UIImageView* _imgBiao;
-    
-    UILabel* _textLabel;
-}
-@property(nonatomic,strong)CusModel* model;
 
+@property(nonatomic,strong)CusModel* model;
+@property(nonatomic,strong)UIImageView* _imgBiao;
+@property(nonatomic,strong)UIButton * _telImage;
+
+@property(nonatomic,strong)UILabel* _textLabel;
+@property(nonatomic,strong)NSString * textstr;
+@property(nonatomic,strong)NSString * telphoneNum;
 @end
