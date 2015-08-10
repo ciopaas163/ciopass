@@ -25,10 +25,21 @@
     UIButton* _btnSilence;//静音
 
     UIButton* _btnFault;//挂断
-
+    
+    UILabel * _telephoneNum;
+    
+    UILabel * _location;
+    
+    UIImageView * imageView;
+    
+    NSInteger currImg;
+    
     CTCallCenter *callCenter;
+    
+    NSTimer * timer;
 }
 @property(nonatomic,strong)NSString * number;
 @property(nonatomic,strong)NSString * name;
+@property(nonatomic,strong)NSString * address;
 -(void)open;
 @end

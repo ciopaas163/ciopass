@@ -36,7 +36,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        // Custom initializationb
     }
     return self;
 }
@@ -144,25 +144,16 @@
     if (add.tag < 100 + 12) {
 
         [_str insertString:add.titleLabel.text atIndex:_str.length];
-          NSLog(@"Number:\t%@",add.titleLabel.text);
     }
-
-//    else if(add.tag == 112){
-//        NSLog(@"112");
-//
-//    }
     else if (add.tag == 112) {
         
-        NSLog(@"Call");
         _callActionsheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"个人直接拨号",@"企业云通讯",@"个人云通讯", nil];
         _callActionsheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
         _callActionsheet.tag = 300;
         [_callActionsheet showInView:self.view];
 
     }else if (add.tag == 114){
-        NSLog(@"114");
     }else if (add.tag == 200) {
-        NSLog(@"添加");
 
          _actionSheet = [[UIActionSheet alloc]
                                       initWithTitle:nil
@@ -175,9 +166,7 @@
         [_actionSheet showInView:self.view];
 
     }else if (add.tag == 201){
-        NSLog(@"删除");
           if (_str.length > 0) {
-            NSLog(@"kds");
             [_str deleteCharactersInRange:NSMakeRange(_str.length-1, 1)];
         }
     }
@@ -204,7 +193,6 @@
     Num = [userDefaults stringForKey:@"Num"];
     
     NSString  *nsdic = [NSString stringWithFormat:@"{\"DataList\":[{\"callees\":\"%@\",\"calleesName\":\"\u962e\u4e2d\u5f3a\",\"caller\":\"%@\",\"callerName\":\"6Ziu5Lit5by6\",\"userId\":\"%@\"}]}",Num,_str,userid];
-    NSLog(@"nsdic = %@",nsdic);
     
     NSString *data = [nsdic stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
@@ -213,8 +201,6 @@
     if (buttonIndex != actionSheet.cancelButtonIndex) {
         if (actionSheet.tag ==300) {
             if (buttonIndex == 0) {
-
-                NSLog(@"个人直接拨号");
                 UIWebView* callwebView = [[UIWebView alloc] init];
                 NSURL* telUrl = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",_str]];
                 [callwebView loadRequest:[NSURLRequest requestWithURL:telUrl]];
@@ -223,14 +209,10 @@
             }
             else if (buttonIndex == 1)
             {
-                NSLog(@"企业云通讯");
-                NSLog(@"个人云通讯");
                 NSString  *nsdic = [NSString stringWithFormat:@"{\"DataList\":[{\"callees\":\"%@\",\"calleesName\":\"\u962e\u4e2d\u5f3a\",\"caller\":\"%@\",\"callerName\":\"6Ziu5Lit5by6\",\"userId\":\"\"}]}",_str,Num];
-                NSLog(@"nsdic = %@",nsdic);
 
                 NSString *data = [nsdic stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                 urlStr =[NSString stringWithFormat:@"http://open.ciopaas.com/Admin/Info/dial_payment_telephone?userid&id=%@&from=2&telephonenumber=%@&eid@&verify=%@",nid,data,verify];
-                NSLog(@"str = %@",urlStr);
                 [self get4];
 
 //                urlStr =[NSString stringWithFormat:@"http://open.ciopaas.com/Admin/Info/dial_payment_telephone?userid=%@&id=%@&from=2&telephonenumber=%@&eid=%@&verify=%@",userid,nid,data,eid,verify];
@@ -239,33 +221,24 @@
             else if (buttonIndex == 2)
             {
                 
-                NSLog(@"个人云通讯");
                 NSString  *nsdic = [NSString stringWithFormat:@"{\"DataList\":[{\"callees\":\"%@\",\"calleesName\":\"\u962e\u4e2d\u5f3a\",\"caller\":\"%@\",\"callerName\":\"6Ziu5Lit5by6\",\"userId\":\"\"}]}",_str,Num];
-                NSLog(@"nsdic = %@",nsdic);
                 
                 NSString *data = [nsdic stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                  urlStr =[NSString stringWithFormat:@"http://open.ciopaas.com/Admin/Info/dial_payment_telephone?userid&id=%@&from=2&telephonenumber=%@&eid@&verify=%@",nid,data,verify];
-                NSLog(@"str = %@",urlStr);
                 [self get4];
      
             }
             else if (buttonIndex == 3)
             {
-
-                NSLog(@"取消:0");
             }
 
         }else if (actionSheet.tag == 301)
         {
 
             if (buttonIndex == 0) {
-                NSLog(@"新建联系人");
             }else if (buttonIndex == 1){
-                NSLog(@"添加到现有联系人");
             }else if (buttonIndex == 2){
-                NSLog(@"添加到客户联系人:1");
             }else if (buttonIndex == 3){
-                NSLog(@"取消:1");
             }
 
         }
@@ -282,7 +255,6 @@
          
          NSDictionary *Dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
          NSString *money=[NSString stringWithFormat:@"%@",[Dic objectForKey:@"post_data_result"]];
-         NSLog(@"Dic = %@",Dic);
          NSString *resulterr = @"1";
          if([money isEqualToString:resulterr])
          {
@@ -301,16 +273,14 @@
                           vertical:0.8];
          }
      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"%@",error);
+
      }];
     
     
 }
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 0) {
-        NSLog(@"取消");
     }else if (buttonIndex == 1){
-        NSLog(@"确定");
     }
 }
 
@@ -323,7 +293,6 @@
 
 #pragma mark 按钮
 -(void)returnButton:(UIBarButtonItem*)leftbutton{
-    NSLog(@"返回");
 //    [self dismissViewControllerAnimated:YES completion:nil];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
