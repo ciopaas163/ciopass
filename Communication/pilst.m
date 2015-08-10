@@ -39,8 +39,6 @@
     NSDictionary *dic2 = [NSDictionary dictionaryWithContentsOfFile:plistPath];
 
     //    打印数据
-    NSLog(@"key1 is %@",[dic2 valueForKey:@"1"]);
-    NSLog(@"dic is %@",dic2);
     //    关于plist中的array读写，代码如下：
     //    把TestPlist文件加入
     NSString *plistPaths = [filePath stringByAppendingPathComponent:@"tests.plist"];
@@ -53,13 +51,11 @@
 
     //    写入
     [arr writeToFile:plistPaths atomically:YES];
-    NSLog(@"arr:%@",arr);
 
     //    读取
     NSArray *arr1 = [NSArray arrayWithContentsOfFile:plistPaths];
     
     //    打印
-    NSLog(@"arr1is %@",arr1);
 }
 
 
