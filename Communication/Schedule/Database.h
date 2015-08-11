@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ScheduleModel.h"
 #import "FMDatabaseQueue.h"
 #import "FMDatabase.h"
 @interface Database : NSObject

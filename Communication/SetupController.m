@@ -8,7 +8,6 @@
 
 #import "SetupController.h"
 #import "PublicViewController.h"
-#import "MailliTableViewCell.h"
 #import "DataController.h"
 #import "ViewController.h"
 
@@ -88,7 +87,6 @@
 
 #pragma mark 按钮
 -(void)clickButton:(UIBarButtonItem*)leftbutton{
-    NSLog(@"返回");
 
     [self dismissViewControllerAnimated:YES completion:nil];
 
@@ -96,7 +94,6 @@
 }
 
 -(void)buttonSignout:(UIButton*)signout{
-    NSLog(@"退出成功");
     ViewController* vcr = [[ViewController alloc]init];
     [self presentViewController:vcr animated:YES completion:nil];
 }
@@ -246,7 +243,6 @@
     {
         if (indexPath.row == 0)
         {
-            NSLog(@" 我的资料");
             DataController* data = [[DataController alloc] init];
             UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:data];
             [self presentViewController:nav animated:YES completion:nil];
@@ -254,7 +250,6 @@
         }
         else if (indexPath.row == 1)
         {
-            NSLog(@"修改密码");
             AlterpasswordViewController *alterpassword = [[AlterpasswordViewController alloc]init];
             UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:alterpassword];
             [self presentViewController:nav animated:YES completion:nil];
@@ -262,7 +257,6 @@
         }
         else if (indexPath.row == 2)
         {
-            NSLog(@" 帮助");
             HelpViewController *help = [[HelpViewController alloc]init];
             ;
             UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:help];
@@ -274,7 +268,6 @@
     {
         if (indexPath.row == 0)
         {
-            NSLog(@" 通讯设置");
             CommunicationSetupViewController *communication = [[CommunicationSetupViewController alloc]init];
             ;
             UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:communication];
@@ -283,12 +276,10 @@
         }
         else if (indexPath.row == 1)
         {
-            NSLog(@" 是否显示农历");
 
         }
         else if (indexPath.row == 2)
         {
-            NSLog(@" 关于通讯助手");
             AboutViewController *about = [[AboutViewController alloc]init];
             ;
             UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:about];
@@ -300,7 +291,6 @@
     {
         if (indexPath.row == 2)
         {
-            NSLog(@" 关于通讯助手");
             AboutViewController *about = [[AboutViewController alloc]init];
             ;
             UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:about];
@@ -341,7 +331,7 @@
 
 #pragma mark 单选
 - (void)didSelectedRadioButton:(QRadioButton *)radio groupId:(NSString *)groupId {
-    NSLog(@"1111did selected radio:%@ groupId:%@", radio.titleLabel.text, groupId);
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *eid;
 @property (nonatomic, strong) NSString *ctime;
 @property (nonatomic, strong) NSString *departmentname;
+@property (nonatomic,assign) NSInteger index;
 
 
 

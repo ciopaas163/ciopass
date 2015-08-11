@@ -87,7 +87,6 @@
 -(void)showSelects
 {
     
-    NSLog(@"%@",addpersons);
 }
 - (void)viewDidUnload
 {

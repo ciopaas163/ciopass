@@ -74,7 +74,6 @@
     [self.view addSubview:testtextfield];
 
     CGFloat textX = CGRectGetMaxX(testtextfield.bounds);
-    NSLog(@"%f = xx22",textX);
     yanButton = [[UIButton alloc]initWithFrame:CGRectMake(KSCREENWIDTH/8+LABLEWIDTH+textX+5, 100+LABLEHEIGHT*2, 80-5, LABLEHEIGHT)];
     yanButton.layer.cornerRadius = 3.0f;
     [yanButton setTitle:@"获取验证码" forState:UIControlStateNormal];
@@ -178,7 +177,6 @@
     [againpasswordtextfield resignFirstResponder];
     
     Tistr =[NSString stringWithFormat:@"http://open.ciopaas.com/Admin/Info/findPassword?sms_verify=%@&telephone_number=%@&new_password=%@",testtextfield.text,numtextfield.text,passwordtextfield.text];
-    NSLog(@"tiser = %@",Tistr);
     [self get4];
 }
 
@@ -200,10 +198,7 @@
                      vertical:0.8];
         return;
     }
-    NSLog(@"num = %@",numtextfield.text);
     NSString *str = [NSString stringWithFormat:@"http://open.ciopaas.com/Admin/Info/modifyPasswordSendVerify?telephone_number=%@",numtextfield.text];
-    
-    NSLog(@"num = %@",str);
     
     NSString *urlStr = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *url = [NSURL URLWithString:urlStr];
@@ -213,9 +208,6 @@
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil]; //将请求的url数据放到NSData对象中
     NSError *error;
     NSDictionary *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
-    
-    NSLog(@"array-%@",array);
-    
     NSString *resultw =[NSString stringWithFormat:@"%@",[array objectForKey:@"feed_message"]];
     NSString *resulterr = @"1";
     
@@ -257,7 +249,6 @@
             NSString *strTime = [NSString stringWithFormat:@"%.2d", seconds];
             dispatch_async(dispatch_get_main_queue(), ^{
                 //设置界面的按钮显示 根据自己需求设置
-                NSLog(@"____%@",strTime);
                 [yanButton setTitle:[NSString stringWithFormat:@"重新获取(%@)",strTime] forState:UIControlStateNormal];
                 yanButton.userInteractionEnabled = NO;
                 
@@ -282,7 +273,6 @@
          
          NSDictionary *Dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
           NSString *money=[NSString stringWithFormat:@"%@",[Dic objectForKey:@"find_info"]];
-         NSLog(@"Dic = %@",Dic);
          NSString *resulterr = @"1";
          if([money isEqualToString:resulterr])
          {
@@ -307,10 +297,8 @@
 
          
      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"%@",error);
+
      }];
-    
-    
 }
 -(void)backButtonClick{
     [self dismissViewControllerAnimated:YES completion:nil];

@@ -150,7 +150,6 @@
     
     
     NSString  *nsdic = [NSString stringWithFormat:@"{\"DataList\":[{\"newPass\":\"%@\",\"oldPass\":\"%@\"}]}",newpass,oldpass];
-    NSLog(@"nsdic = %@",nsdic);
     NSString *data = [nsdic stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     Strurl = [NSString stringWithFormat:@"http://open.ciopaas.com/Admin/Info/update_password_data?id=%@&verify=%@&passworddata=%@",nid,verify,data];

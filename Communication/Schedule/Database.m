@@ -39,8 +39,6 @@
         NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
         path = [path stringByAppendingPathComponent:DBNAME];
         
-        NSLog(@"path = %@",path);
-        
         self.database = [FMDatabase databaseWithPath:path];
         
         if ([self.database open])
@@ -48,10 +46,6 @@
             //创建日历事件表
             NSString *sql = @"create table if not exists Schedule(sysID integer primary key autoincrement,title text, content text,id text,loginID text,operateId text,stop_time text,alertTime text,begin_time text,task_tag text,userType text,SID text,verify text)";
             [self.database executeUpdate:sql];
-            
-//            //创建通话记录表
-//            NSString *callsql = @"create table if not exists Call_records(sysID integer primary key autoincrement,name text, State text,phone_number text,time text)";
-//            [self.database executeUpdate:callsql];
             
             //创建日历记录表
             NSString *Calsql = @"create table if not exists Calendar(sysID integer primary key autoincrement,title text, State text,time text,jishi text,Modular text)";
@@ -72,7 +66,6 @@
     BOOL success = NO;
     if (!sql)
     {
-        NSLog(@"参数为空");
         return success;
     }
     
@@ -91,7 +84,6 @@
 {
     if (!Schedule)
     {
-        NSLog(@"参数为空");
         return NO;
     }
     BOOL success = NO;
@@ -104,7 +96,7 @@
     [self.database close];
     return success;
 }
-
+/*
 #pragma mark 查询日历事件某条数据
 
 - (NSArray *)searchMovieByName:(NSString *)sql
@@ -186,7 +178,7 @@
     
     return list;
 }
-
+*/
 - (BOOL)updateMovie:(NSString *)sql;              //更新某条数据
 {
     BOOL success = NO;
@@ -233,7 +225,6 @@
 
 - (BOOL)openDB{
     self.datadb = [FMDatabase databaseWithPath:[self databaseFilePath]];
-    NSLog(@"%@",[self databaseFilePath]);
     if ([self.datadb open]) {
         return YES;
     }

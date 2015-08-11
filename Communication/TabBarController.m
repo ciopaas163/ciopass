@@ -6,14 +6,14 @@
 //  Copyright (c) 2015年 JL. All rights reserved.
 //
 
-#import "TabBarController.h"
-#import "Maillist.h"             //通讯录   【个人】
+#import "TabBarController.h"            //通讯录   【个人】
 #import "EnterpriseController.h"  //通讯录  【企业】
-#import "DialViewController.h"   //拨号盘
-#import "Callrecords.h"          //动态记录
+#import "KeyViewController.h"   //拨号盘
+#import "Callrecords.h"//动态记录
+#import "ZYHMunViewController.h"//沟通
 //#import "Thecalendar.h"          //日历
 
-#import "CKDemoViewController.h"
+#import "MyInfoViewController.h"
 
 @interface TabBarController ()
 @property (nonatomic, strong) UINavigationController *navigationController;
@@ -21,32 +21,46 @@
 
 @implementation TabBarController
 
+-(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self=[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self)
+    {
+        CGRect frame = CGRectMake(0, 0, 320, 49);
+        
+        UIView *v = [[UIView alloc] initWithFrame:frame];
+        v.backgroundColor=[UIColor whiteColor];
+        [self.tabBar insertSubview:v atIndex:0];
+        
+        //self.tabBar.opaque = YES;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Do any additional setup after loading the view.
-    //    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:[[Maillist alloc]init]];
     UINavigationController* Entnav = [[UINavigationController alloc] initWithRootViewController:[[EnterpriseController alloc] init]];
-    _nav1 = [[UINavigationController alloc] initWithRootViewController:[[DialViewController alloc] init]];
-    UINavigationController* nav2 = [[UINavigationController alloc] initWithRootViewController:[[Callrecords alloc] init]];
+    _nav1 = [[UINavigationController alloc] initWithRootViewController:[[KeyViewController alloc] init]];
+    UINavigationController* nav2 = [[UINavigationController alloc] initWithRootViewController:[[ZYHMunViewController alloc] init]];
     //    UINavigationController* nav3 = [[UINavigationController alloc] initWithRootViewController:[[Thecalendar alloc] init]];
     
-    self.viewController = [CKDemoViewController new];
-    
+    UINavigationController * nav3=[[UINavigationController alloc]initWithRootViewController:[[MyInfoViewController alloc]init]] ;
+    //self.viewController = [CKDemoViewController new];
     
     //通讯录  【企业】
-    Entnav.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"通讯录" image:[UIImage imageNamed:@"contact-gray@2x.png"]selectedImage:[UIImage imageNamed:@"contact-blue@2x.png"]];
+    Entnav.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"通讯录" image:[UIImage imageNamed:@"contact-gray.png"]selectedImage:[UIImage imageNamed:@"contact-blue.png"]];
     
     //    拨号盘
-    _nav1.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"拨号盘" image:[UIImage imageNamed:@"keyboard-gray@2x.png"] selectedImage:[UIImage imageNamed:@"keyboard-blue@2x.png"]];
+    _nav1.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"拨号盘" image:[UIImage imageNamed:@"keyboard-gray.png"] selectedImage:[UIImage imageNamed:@"keyboard-blue.png"]];
     
     //    动态记录
-    nav2.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"动态记录" image:[UIImage imageNamed:@"recentdynamic-gray@2x.png"] selectedImage:[UIImage imageNamed:@"recentdynamic-blue@2x.png"]];
+    nav2.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"沟通" image:[UIImage imageNamed:@"recentdynamic-gray.png"] selectedImage:[UIImage imageNamed:@"recentdynamic-blue.png"]];
     
-    //    日历
-    self.viewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"日历" image:[UIImage imageNamed:@"calender-gray@2x.png"] selectedImage:[UIImage imageNamed:@"calender-blue@2x.png"]];
+    //    我的info
+    nav3.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"我的" image:[UIImage imageNamed:@"calender-gray.png"] selectedImage:[UIImage imageNamed:@"calender-blue.png"]];
     
-    self.viewControllers = @[Entnav,_nav1,nav2,self.viewController];
+    self.viewControllers = @[Entnav,_nav1,nav2,nav3];
     
     
 }

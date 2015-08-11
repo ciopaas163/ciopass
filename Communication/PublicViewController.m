@@ -23,7 +23,7 @@
     //创建一个导航栏集合
     _navItem = [[UINavigationItem alloc] initWithTitle:nil];
     [self.view addSubview:_navBar];
-     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(returnButton:)];
+     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(returnButton)];
     
 
 }
@@ -31,7 +31,6 @@
 
 #pragma mark 按钮
 -(void)returnButton:(UIBarButtonItem*)leftbutton{
-    NSLog(@"返回");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

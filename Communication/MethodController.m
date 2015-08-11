@@ -46,7 +46,6 @@ static MethodController  *instans = nil;
 
 #pragma mark 按钮
 -(void)retuButton:(UIBarButtonItem*)leftbutton{
-    NSLog(@"返回");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 -(void)rightButton:(UIBarButtonItem*)click{  //导航栏左边的按钮;
@@ -56,7 +55,6 @@ static MethodController  *instans = nil;
 
 #pragma mark  --- 设置按钮
 -(void)perFormSetup:(UISegmentedControl*)Setup{
-    NSLog(@"Setup:设置");
     SetupController* sevc = [[SetupController alloc] init];
     UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:sevc];
 

@@ -46,7 +46,6 @@
 
 -(void)leftButtonClick:(UIButton*)backButton
 {
-    NSLog(@"返回");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -348,7 +347,6 @@
 #pragma mark 按钮
 -(void)clickButton:(UIBarButtonItem*)leftbutton
 {
-    NSLog(@"返回");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 #pragma mark 保存
@@ -358,7 +356,6 @@
 }
 #pragma mark 单选
 - (void)didSelectedRadioButton:(QRadioButton *)radio groupId:(NSString *)groupId {
-    NSLog(@"did selected radio:%@ groupId:%@", radio.titleLabel.text, groupId);
     radio.selected = YES;
     
     

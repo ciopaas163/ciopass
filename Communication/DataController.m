@@ -102,7 +102,6 @@
     NSString *verify = [userDefaults objectForKey:@"verify"];
     
     urlstr = [NSString stringWithFormat:@"http://open.ciopaas.com/Admin/Info/get_personal_data?id=%@&verify=%@",nid,verify];
-    NSLog(@"urlstr = %@",urlstr);
     
     AFHTTPRequestOperationManager *manager=[[AFHTTPRequestOperationManager alloc]init];
     manager.responseSerializer=[AFHTTPResponseSerializer serializer];
@@ -116,7 +115,6 @@
          
          name = [NSString stringWithFormat:@"%@",XinArray[@"name"]];
          
-           NSLog(@"urlstr = %@",name );
          
          company_name = [NSString stringWithFormat:@"%@",XinArray[@"company_name"]];
          
@@ -134,17 +132,13 @@
          fax = [NSString stringWithFormat:@"%@",XinArray[@"fax"]];//传真
          
      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"12212 = %@",error);
      }];
-    
-      NSLog(@"urlstr11 r = %@",name);
+
 }
 
 -(void)editButtonClick:(UIButton *)but
 {
     
-    NSLog(@"_dataArray2 = %@",_dataArray);
-    NSLog(@"_dataArray3 = %@",name);
  
     if (self.btnStatus == YES) {
         [button setTitle:@"编辑" forState:UIControlStateNormal];
@@ -179,7 +173,6 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-        NSLog(@"_dataArray4 = %@",name);
     static NSString *IDCell = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:IDCell];
     if (cell==nil)
@@ -244,7 +237,6 @@
 }
 #pragma mark 返回
 -(void)leftButtonClick:(UIButton*)backButton{
-    NSLog(@"返回");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
