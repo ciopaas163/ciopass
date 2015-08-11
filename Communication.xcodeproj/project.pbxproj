@@ -279,7 +279,6 @@
 		F86A60D01B573B10003C8A27 /* expandable_arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F86A606F1B573B10003C8A27 /* expandable_arrow_down@2x.png */; };
 		F86A60D11B573B10003C8A27 /* expandable_arrow_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F86A60701B573B10003C8A27 /* expandable_arrow_right@2x.png */; };
 		F86A60D21B573B10003C8A27 /* ic_action_search.png in Resources */ = {isa = PBXBuildFile; fileRef = F86A60711B573B10003C8A27 /* ic_action_search.png */; };
-		F86A60D31B573B10003C8A27 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F86A60721B573B10003C8A27 /* icon.png */; };
 		F86A60D41B573B10003C8A27 /* list_null.png in Resources */ = {isa = PBXBuildFile; fileRef = F86A60731B573B10003C8A27 /* list_null.png */; };
 		F86A60D51B573B10003C8A27 /* login_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F86A60741B573B10003C8A27 /* login_logo.png */; };
 		F86A60D61B573B10003C8A27 /* new_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F86A60751B573B10003C8A27 /* new_icon.png */; };
@@ -350,6 +349,8 @@
 		F896CC311AA4613C00E7ED30 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F896CC301AA4613C00E7ED30 /* libsqlite3.dylib */; };
 		F896CC491AA470E700E7ED30 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = F896CC481AA470E700E7ED30 /* Database.m */; };
 		F8AC82DD1B70931400A05F96 /* newUsercontact.m in Sources */ = {isa = PBXBuildFile; fileRef = F8AC82DC1B70931400A05F96 /* newUsercontact.m */; };
+		F8B13D571B7999F7006A277D /* PYMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B13D561B7999F7006A277D /* PYMethod.m */; };
+		F8B13D591B79A6A5006A277D /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F8B13D581B79A6A5006A277D /* icon.png */; };
 		F8BDA52B1B4CEEC000B2AE11 /* 拨号盘收起灰2.png in Resources */ = {isa = PBXBuildFile; fileRef = F8BDA51F1B4CEEC000B2AE11 /* 拨号盘收起灰2.png */; };
 		F8BDA52C1B4CEEC000B2AE11 /* keyboard-gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8BDA5201B4CEEC000B2AE11 /* keyboard-gray@2x.png */; };
 		F8BDA52D1B4CEEC000B2AE11 /* keyboard-close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8BDA5211B4CEEC000B2AE11 /* keyboard-close@2x.png */; };
@@ -748,7 +749,6 @@
 		F86A606F1B573B10003C8A27 /* expandable_arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "expandable_arrow_down@2x.png"; path = "drawable-hdpi/expandable_arrow_down@2x.png"; sourceTree = "<group>"; };
 		F86A60701B573B10003C8A27 /* expandable_arrow_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "expandable_arrow_right@2x.png"; path = "drawable-hdpi/expandable_arrow_right@2x.png"; sourceTree = "<group>"; };
 		F86A60711B573B10003C8A27 /* ic_action_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_action_search.png; sourceTree = "<group>"; };
-		F86A60721B573B10003C8A27 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		F86A60731B573B10003C8A27 /* list_null.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_null.png; sourceTree = "<group>"; };
 		F86A60741B573B10003C8A27 /* login_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_logo.png; sourceTree = "<group>"; };
 		F86A60751B573B10003C8A27 /* new_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_icon.png; sourceTree = "<group>"; };
@@ -832,6 +832,9 @@
 		F896CC481AA470E700E7ED30 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Database.m; path = Schedule/Database.m; sourceTree = "<group>"; };
 		F8AC82DB1B70931400A05F96 /* newUsercontact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newUsercontact.h; sourceTree = "<group>"; };
 		F8AC82DC1B70931400A05F96 /* newUsercontact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newUsercontact.m; sourceTree = "<group>"; };
+		F8B13D551B7999F7006A277D /* PYMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYMethod.h; sourceTree = "<group>"; };
+		F8B13D561B7999F7006A277D /* PYMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYMethod.m; sourceTree = "<group>"; };
+		F8B13D581B79A6A5006A277D /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		F8BDA51F1B4CEEC000B2AE11 /* 拨号盘收起灰2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "拨号盘收起灰2.png"; sourceTree = "<group>"; };
 		F8BDA5201B4CEEC000B2AE11 /* keyboard-gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-gray@2x.png"; sourceTree = "<group>"; };
 		F8BDA5211B4CEEC000B2AE11 /* keyboard-close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-close@2x.png"; sourceTree = "<group>"; };
@@ -1016,6 +1019,8 @@
 				3BDE48101A9FF6F8001901A5 /* pinyin.c */,
 				3BDE48111A9FF6F8001901A5 /* POAPinyin.h */,
 				3BDE48121A9FF6F8001901A5 /* POAPinyin.m */,
+				F8B13D551B7999F7006A277D /* PYMethod.h */,
+				F8B13D561B7999F7006A277D /* PYMethod.m */,
 				3BDE48131A9FF6F8001901A5 /* GroupViewController.h */,
 				3BDE48141A9FF6F8001901A5 /* GroupViewController.m */,
 				3BDE48151A9FF6F8001901A5 /* GroupViewController.xib */,
@@ -1738,6 +1743,7 @@
 		F86A60451B573AE7003C8A27 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F8B13D581B79A6A5006A277D /* icon.png */,
 				F86A60611B573B10003C8A27 /* com_ttshrk_view_scroll_picker_bar@2x.png */,
 				F83FFD871AA0580000095EB8 /* sub_page_open@2x.png */,
 				F83FFD881AA0580000095EB8 /* sub_page_close@2x.png */,
@@ -1797,7 +1803,6 @@
 				F86A606D1B573B10003C8A27 /* ee.png */,
 				F86A606E1B573B10003C8A27 /* emotionstore_progresscancelbtn.png */,
 				F86A60711B573B10003C8A27 /* ic_action_search.png */,
-				F86A60721B573B10003C8A27 /* icon.png */,
 				F86A60731B573B10003C8A27 /* list_null.png */,
 				F86A60741B573B10003C8A27 /* login_logo.png */,
 				F86A60751B573B10003C8A27 /* new_icon.png */,
@@ -2101,8 +2106,8 @@
 				F83FFDED1AA0580000095EB8 /* 向右.9.png in Resources */,
 				F86A60DC1B573B10003C8A27 /* record_calendar_icon.png in Resources */,
 				F83FFDEE1AA0580000095EB8 /* 向右.png in Resources */,
-				F86A60D31B573B10003C8A27 /* icon.png in Resources */,
 				F83FFE341AA0580000095EB8 /* 选1.png in Resources */,
+				F8B13D591B79A6A5006A277D /* icon.png in Resources */,
 				F83FFE041AA0580000095EB8 /* 拨号记录常态.png in Resources */,
 				F83066151B4E149900F2A1A8 /* 删除@2x.png in Resources */,
 				F83FFE181AA0580000095EB8 /* 周右.png in Resources */,
@@ -2284,6 +2289,7 @@
 				3BDE48831A9FF815001901A5 /* AFHTTPSessionManager.m in Sources */,
 				3BDE48051A9FF6E1001901A5 /* ConverseCell.m in Sources */,
 				3BDE48A51A9FF82A001901A5 /* MBProgressHUD.m in Sources */,
+				F8B13D571B7999F7006A277D /* PYMethod.m in Sources */,
 				3BDE48E31A9FF961001901A5 /* PersonCell.m in Sources */,
 				F86A610B1B57510D003C8A27 /* AFFNumericKeyboard.m in Sources */,
 				F84A2B5B1B5CCF5100AC4AA3 /* PersonInfoViewController.m in Sources */,

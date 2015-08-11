@@ -24,6 +24,8 @@
     NSArray * keys;
     CGPoint point;
     BOOL isChange;
+    
+    UITextField * currField;
 }
 @property (strong,nonatomic) CustomerModel * model;
 @property (strong,nonatomic)NSArray* _mutableArray;

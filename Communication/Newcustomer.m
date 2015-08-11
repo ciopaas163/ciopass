@@ -187,7 +187,7 @@
     FMDatabase * db=[FMDatabase databaseWithPath:path];
     if ([db open])
     {
-        NSString* inserSql = [NSString stringWithFormat:@"INSERT INTO %@ (address,fax,userId,department, birthday, mobilePhone, telephone1, telephone2, cid, company, email, cshare, ctime, groupname , industry, internet, job, name, password, pid, pshare , remark , status,uid) VALUES ('%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@')",@"ID_Customer",model.address,model.fax,model.userId,model.department,model.birthday,model.mobilePhone,model.telephone1,model.telephone2,model.cid,model.company,model.email,model.cshare,model.ctime,model.groupname,model.industry,model.internet,model.job,model.name,model.password,model.pid,model.pshare,model.remark,model.status,model.uid];
+        NSString* inserSql = [NSString stringWithFormat:@"INSERT INTO %@ (address,fax,userId,department, birthday, mobilePhone, telephone1, telephone2, cid, company, email, cshare, ctime, groupname , industry, internet, job, name, password, pid, pshare , remark , status,uid,sign) VALUES ('%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@')",@"ID_Customer",model.address,model.fax,model.userId,model.department,model.birthday,model.mobilePhone,model.telephone1,model.telephone2,model.cid,model.company,model.email,model.cshare,model.ctime,model.groupname,model.industry,model.internet,model.job,model.name,model.password,model.pid,model.pshare,model.remark,model.status,model.uid,model._id];
         //把数据保存到数据库的@"ID_Enterprise"表里
         BOOL result= [db executeUpdate:inserSql];
         if (result) {
@@ -198,7 +198,7 @@
                 int rowid=[resultSet intForColumnIndex:0];
                 [db close];
                 if (_status==1) {
-                    [PublicAction changeContactType:[NSDictionary dictionaryWithObjectsAndKeys:@"客户",[NSString stringWithFormat:@"%d",rowid], nil]];
+                    [PublicAction changeContactType:[NSDictionary dictionaryWithObjectsAndKeys:@"客户",model._id, nil]];
                 }
                 [self showMessage];
                 return rowid;

@@ -180,6 +180,7 @@
     keys=[[NSArray alloc]init] ;
     importDic=[[NSMutableArray alloc]init];
     _phoneNums = [[NSMutableArray alloc] init];
+    markDict=[[NSDictionary alloc]init];
     // Do any additional setup after loading the view, typically from a nib.
     [self loadContacts];
     self.view.backgroundColor = [UIColor colorWithRed:241.0/255.0 green:241.0/255.0 blue:241.0/255.0 alpha:1];
@@ -205,12 +206,19 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    if (markDict==nil) {
+        markDict=[[NSDictionary alloc]init];
+    }
+    NSArray * paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString * path=paths[0];
+    path=[path stringByAppendingPathComponent:@"contacttype.plist"];
+    markDict=[NSMutableDictionary dictionaryWithContentsOfFile:path];
     [_tableView reloadData];
 }
 
 -(void)viewDidDisappear:(BOOL)animated
 {
-    [importDic removeAllObjects];
+    //[importDic removeAllObjects];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -240,6 +248,7 @@
         }else if (buttonIndex ==2){
             [self addContactToUser];
         }
+        [importDic removeAllObjects];
     }
 }
 
@@ -262,6 +271,7 @@
     {
         ContactModel * con=[contactDic objectForKey:key];
         CustomerModel * model=[[CustomerModel alloc]init];
+        model._id=con._id;
         model.name=con.name;
         model.mobilePhone=con.mobilePhone;
         model.telephone1=con.telephone1;
@@ -281,6 +291,7 @@
     ContactModel * con=[contactDic objectForKey:key];
     model.name=con.name;
     model.mobilePhone=con.mobilePhone;
+    model._id=con._id;
     model.telephone1=con.telephone1;
     model.telephone2=model.telephone2;
     Newcustomer * customer=[[Newcustomer alloc]init];
@@ -310,6 +321,7 @@
         ContactModel * con=[contactDic objectForKey:key];
         PersonInfoModel * model=[[PersonInfoModel alloc]init];
         model.name=con.name;
+        model._id=con._id;
         model.mobilePhone=con.mobilePhone;
         model.telephone1=con.telephone1;
         model.telephone2=model.telephone2;
@@ -326,6 +338,7 @@
     NSString * key= [importDic objectAtIndex:0];
     ContactModel * con=[contactDic objectForKey:key];
     model.name=con.name;
+    model._id=con._id;
     model.mobilePhone=con.mobilePhone;
     model.telephone1=con.telephone1;
     newUsercontact * contact=[[newUsercontact alloc]init];
@@ -446,6 +459,14 @@
     ContactModel * model=[persons objectAtIndex:indexPath.row];
     //NSString * personname=(NSString *)ABRecordCopyCompositeName(record);
     tableCell.title=model.name;
+    NSString * mark= [markDict objectForKey:model._id];
+    if (mark.length>0)
+    {
+        tableCell.butSelected.text=mark;
+        tableCell.butSelected.font=[UIFont systemFontOfSize:11];
+        tableCell.butSelected.textColor=[UIColor grayColor];
+        tableCell.butSelected.layer.borderWidth=0;
+    }
     
     UILabel * btn=[[UILabel alloc]initWithFrame:CGRectMake(10, 7.5, 30, 30)];
     btn.text=[model.name substringToIndex:1];
@@ -478,8 +499,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [_tableView deselectRowAtIndexPath:indexPath animated:NO];
     MasterCell * tableCell=(MasterCell *)[_tableView cellForRowAtIndexPath:indexPath];
+    if(tableCell.butSelected.text.length>0)return;
     NSString *key=[keys objectAtIndex:indexPath.section];
     NSMutableArray *persons=[sectionDic objectForKey:key];
     ContactModel * model=[persons objectAtIndex:indexPath.row];
@@ -497,7 +519,6 @@
         tableCell.isSelected=NO;
     }
     [self chageRightBtnTitle];
-    [_tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 -(void)chageRightBtnTitle
@@ -560,51 +581,12 @@
     }
     
 }
-
+/*
 -(void)messageTelephone:(NSString *)Telephone{
     [[UIApplication sharedApplication]openURL:[NSURL URLWithString:_strApple]];
 }
-
-#pragma mark ====  【  iphoneBtn 拨号 】
-
-- (void)callWithNum:(NSString *)_strIphone type:(int)type{
-    
-    
-    userid = [userDefaults stringForKey:@"userid"];
-    nid = [userDefaults stringForKey:@"nid"];
-    eid = [userDefaults stringForKey:@"eid"];
-    verify = [userDefaults stringForKey:@"verify"];
-    Num = [userDefaults stringForKey:@"Num"];
-    
-    NSString  *nsdic = [NSString stringWithFormat:@"{\"DataList\":[{\"callees\":\"%@\",\"calleesName\":\"\u962e\u4e2d\u5f3a\",\"caller\":\"%@\",\"callerName\":\"6Ziu5Lit5by6\",\"userId\":\"%@\"}]}",Num,_strIphone,userid];
-    
-    NSString *data = [nsdic stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    _strApple = _strIphone;
-    
-    NSString* strUrling = [_strApple stringByReplacingOccurrencesOfString:@"-" withString:@""];
-    NSString* striZui = [strUrling stringByReplacingOccurrencesOfString:@"+86" withString:@""];
-    
-    
-    if (type == 0) {//个人直接
-        UIWebView* callwebView = [[UIWebView alloc] init];
-        NSURL* telUrl = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",_strIphone]];
-        [callwebView loadRequest:[NSURLRequest requestWithURL:telUrl]];
-        [self.view addSubview:callwebView];
-    }else if (type == 1){
-    }else if (type == 2){
-        
-        
-        NSString  *nsdic = [NSString stringWithFormat:@"{\"DataList\":[{\"callees\":\"%@\",\"calleesName\":\"\u962e\u4e2d\u5f3a\",\"caller\":\"%@\",\"callerName\":\"6Ziu5Lit5by6\",\"userId\":\"\"}]}",striZui,Num];
-        
-        NSString *data = [nsdic stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        urlStr =[NSString stringWithFormat:@"http://open.ciopaas.com/Admin/Info/dial_payment_telephone?userid&id=%@&from=2&telephonenumber=%@&eid@&verify=%@",nid,data,verify];
-        [self get5];
-        
-    }
-}
-
-
+*/
+/*
 -(void)get5{
     
     AFHTTPRequestOperationManager *manager=[[AFHTTPRequestOperationManager alloc]init];
@@ -637,7 +619,7 @@
     
     
 }
-
+*/
 
 #pragma UISearchDisplayDelegate
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString

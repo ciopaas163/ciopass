@@ -215,6 +215,7 @@
         model.remark = [result stringForColumn:@"remark"];
         model.birthday = [result stringForColumn:@"birthday"];
         model.contactID=[result stringForColumn:@"contactid"];
+        model.sign=[result intForColumn:@"sign"];
         //把取出的model保存到可变数组里
         [self addCustoArray:model];
     }
@@ -463,7 +464,7 @@
     //    设置表名
     NSString* tableName = @"ID_Customer";
     //    设置表名行的标题
-    NSString* creates = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (sysid integer PRIMARY KEY,_id TEXT,address TEXT,fax TEXT,userId TEXT,department TEXT, birthday TEXT, mobilePhone TEXT, telephone1 TEXT, telephone2 TEXT, cid TEXT, company TEXT, email TEXT, cshare TEXT, ctime TEXT, groupname TEXT, industry TEXT, internet TEXT, job TEXT, name TEXT, password TEXT, pid TEXT, pshare TEXT, remark TEXT, status TEXT,uid TEXT,contactid TEXT)",tableName];
+    NSString* creates = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (sysid integer PRIMARY KEY,_id TEXT,address TEXT,fax TEXT,userId TEXT,department TEXT, birthday TEXT, mobilePhone TEXT, telephone1 TEXT, telephone2 TEXT, cid TEXT, company TEXT, email TEXT, cshare TEXT, ctime TEXT, groupname TEXT, industry TEXT, internet TEXT, job TEXT, name TEXT, password TEXT, pid TEXT, pshare TEXT, remark TEXT, status TEXT,uid TEXT,contactid TEXT,sign integer default 0)",tableName];
     //    创建表的方法【创建数据库里的表】
     BOOL b=[db open];
     if (b)

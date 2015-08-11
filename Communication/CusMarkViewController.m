@@ -86,12 +86,13 @@
     path=[path stringByAppendingPathComponent:@"commun.db"];
     FMDatabase * db=[FMDatabase databaseWithPath:path];
     NSMutableArray * array=[[NSMutableArray alloc]init];
+    NSMutableDictionary * data=[[NSMutableDictionary alloc]init];
     if ([db open])
     {
         for (int i=0; i<_customerArray.count; i++)
         {
             CustomerModel * model=[_customerArray objectAtIndex:i];
-            NSString* inserSql = [NSString stringWithFormat:@"INSERT INTO %@ (name,mobilePhone, telephone1,cid) VALUES ('%@','%@','%@','%@')",@"ID_Customer",[self getResult:model.name],[self getResult:model.mobilePhone],[self getResult:model.telephone1],[self getResult:_cid]];
+            NSString* inserSql = [NSString stringWithFormat:@"INSERT INTO %@ (name,mobilePhone, telephone1,cid,sign) VALUES ('%@','%@','%@','%@','%@')",@"ID_Customer",[self getResult:model.name],[self getResult:model.mobilePhone],[self getResult:model.telephone1],[self getResult:_cid],[self getResult:model._id]];
             BOOL result= [db executeUpdate:inserSql];
             if (result) {
                 NSString * sql=@"SELECT last_insert_rowid() from ID_CUSTOMER";
@@ -99,16 +100,14 @@
                 if ([resultSet next])
                 {
                     NSString * rowid=[resultSet stringForColumnIndex:0];
+                    [data setValue:@"客户" forKey:model._id];
                     [array addObject:rowid];
                 }
             }
+            
         }
     }
     [db close];
-    NSMutableDictionary * data=[[NSMutableDictionary alloc]init];
-    for (NSString * key in array) {
-        [data setValue:@"客户" forKey:key];
-    }
     [PublicAction changeContactType:data];
     return [array sortedArrayUsingSelector:@selector(compare:)];
 }

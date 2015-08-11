@@ -32,4 +32,5 @@
 @property (strong,nonatomic)NSString *telephone2;
 @property (strong,nonatomic)NSString *uid;
 @property (assign,nonatomic)NSInteger cus_type;
+@property (assign,nonatomic)NSInteger sign;
 @end

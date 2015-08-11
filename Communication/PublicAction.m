@@ -39,7 +39,8 @@
 
 +(void)changeContactType:(NSDictionary *)sender
 {
-    NSString * path=NSHomeDirectory();
+    NSArray * paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString * path=paths[0];
     path=[path stringByAppendingPathComponent:@"contacttype.plist"];
     NSMutableDictionary * types=[NSMutableDictionary dictionaryWithContentsOfFile:path];
     if (types==nil) {

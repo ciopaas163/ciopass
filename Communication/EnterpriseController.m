@@ -188,7 +188,6 @@
     if (mark == 1) {
         OrganizationController* organ = [[OrganizationController alloc] init];
          organ.hidesBottomBarWhenPushed  = YES;  //隐藏定义的卡片兰
-
         [self.navigationController pushViewController:organ animated:YES];
         
     }else if (mark == 2){

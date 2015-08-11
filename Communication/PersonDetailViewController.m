@@ -57,21 +57,21 @@
         [_tableview reloadData];
     }else
     {
-        [dictAll setValue:@"" forKey:@"g收起更多"];
-        [sender setTitle:@"编辑"];
+        [sender setTitle:@"编辑"];showStatus=NO;
         sender.tag=1;self.optionStatus=0;
-        [dataArray removeObjectAtIndex:1];
-        [dataArray insertObject:dictOther atIndex:1];
         UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
         UIView *firstResponder = [keyWindow performSelector:@selector(firstResponder)];
         [firstResponder resignFirstResponder];
         if (isChange) {
             if ([self updateContactLocalID:model]) {
+                NSInteger index=[[self.navigationController viewControllers]indexOfObject:self];
+                PersonalViewController * cus=(PersonalViewController *)[self.navigationController.viewControllers objectAtIndex:index-1];
+                cus.status=@"1";
                 [self saveContactWithUrl];
             }
         }
-        
-        [_tableview reloadData];
+        [self loadTableData];
+        [_tableview reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
     }
     
 }
@@ -153,6 +153,11 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    
+}
+
+-(void)loadTableData
+{
     if (dataArray==nil) {
         dataArray=[NSMutableArray arrayWithCapacity:2];
     }else
@@ -172,7 +177,7 @@
     [dictAll setValue:[self getResult:model.birthday] forKey:@"i生日"];
     [dictAll setValue:[self getResult:model.job] forKey:@"j职位"];
     [dictAll setValue:[self getResult:model.industry] forKey:@"k行业"];
-    [dictAll setValue:@"" forKey:@"l网址"];
+    [dictAll setValue:[self getResult:model.internet] forKey:@"l网址"];
     [dictAll setValue:[self getResult:model.address] forKey:@"m地址"];
     [dictAll setValue:[self getResult:model.fax] forKey:@"n传真"];
     [dictAll setValue:[self getResult:model.remark] forKey:@"o备注"];
@@ -189,7 +194,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    isChange=NO;
+    isChange=NO;[self loadTableData];
     keys=[NSArray arrayWithObjects:@"name",@"company",@"cid",@"mobilePhone",@"telephone1",@"telephone2",@"email",@"department",@"birthday",@"job",@"industry",@"internet",@"address",@"fax",@"remark", nil];
     self.view.backgroundColor=[UIColor whiteColor];
     _tableview=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
@@ -261,7 +266,7 @@
                 [addBtn setTitle:@"加入客户" forState:UIControlStateNormal];
                 [addBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
                 addBtn.layer.backgroundColor=[UIColor whiteColor].CGColor;
-                [addBtn addTarget:self action:@selector(addCustomer:) forControlEvents:UIControlEventEditingDidEnd];
+                [addBtn addTarget:self action:@selector(addCustomer:) forControlEvents:UIControlEventTouchUpInside];
                 [cell.contentView addSubview:addBtn];
                 origin+=35;
             }
@@ -270,7 +275,7 @@
             [deleteCus setTitle:@"删除" forState:UIControlStateNormal];
             [deleteCus setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             deleteCus.layer.backgroundColor=COLOR(220,20,60,1).CGColor;
-            [deleteCus addTarget:self action:@selector(deleteTap) forControlEvents:UIControlEventEditingDidEnd];
+            [deleteCus addTarget:self action:@selector(deleteTap) forControlEvents:UIControlEventTouchUpInside];
             [cell.contentView addSubview:deleteCus];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -327,6 +332,14 @@
                 imageClose=[[UIImageView alloc]initWithFrame:CGRectMake(tableCell.frame.size.width-25, 12.5, 20, 15)];
                 imageClose.image=[UIImage imageNamed:@"sub_page_close.png"];
                 [clickcell.contentView addSubview:imageClose];
+            }else
+            {
+                if (!showStatus) {
+                    imageClose.image=[UIImage imageNamed:@"sub_page_close.png"];
+                }else
+                {
+                    imageClose.image=[UIImage imageNamed:@"sub_page_open.png"];
+                }
             }
             if (self.optionStatus!=1) {
                 imageClose.hidden=NO;
@@ -374,7 +387,7 @@
             }
             numbercell.telphoneNum=value;
             numbercell._tetLabel.tag=indexPath.section+indexPath.row;
-            [numbercell._tetLabel addTarget:self action:@selector(inputTap:) forControlEvents:UIControlEventValueChanged];
+            [numbercell._tetLabel addTarget:self action:@selector(inputTap:) forControlEvents:UIControlEventEditingDidEnd];
             return numbercell;
         }
     }
@@ -385,7 +398,7 @@
     {
         tableCell._tetLabel.enabled=NO;
     }
-    [tableCell._tetLabel addTarget:self action:@selector(inputTap:) forControlEvents:UIControlEventValueChanged];
+    [tableCell._tetLabel addTarget:self action:@selector(inputTap:) forControlEvents:UIControlEventEditingDidEnd];
     tableCell._tetLabel.tag=indexPath.section+indexPath.row;
     return tableCell;
 }
@@ -456,6 +469,12 @@
     if ([db open]) {
         if ([db executeUpdate:sql]) {
             [db close];
+            NSArray * paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString * path=paths[0];
+            path=[path stringByAppendingPathComponent:@"contacttype.plist"];
+            NSMutableDictionary * types=[NSMutableDictionary dictionaryWithContentsOfFile:path];
+            [types removeObjectForKey:[NSString stringWithFormat:@"%ld",model.sign]];
+            [types writeToFile:path atomically:YES];
             return true;
         }
     }
@@ -620,7 +639,7 @@
     NSInteger row=1;
     NSInteger section=0;
     if (tag==1) {
-        section=1;row=2;
+        section=1;row=1;
     }else if(tag>1)
     {
         section=1;row=tag;

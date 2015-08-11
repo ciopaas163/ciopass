@@ -35,6 +35,5 @@
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *flag;
 @property (nonatomic, strong) NSString *ctimes;
-
-
+@property (nonatomic,strong) NSString * condition;
 @end

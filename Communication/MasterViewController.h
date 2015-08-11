@@ -19,43 +19,19 @@
     NSMutableDictionary *contactDic;
     NSMutableArray *filteredArray;
     NSMutableArray * importDic;
-    //NSMutableArray *contactNames;
-    BOOL *flag;
     
-    UIActionSheet* _Actionsheet;
     NSString* _strNumber;//存电话号码:
-    
-    
-    NSString* _strApple;
-    
-    NSString* stringLing;
-    
-    UIImageView* _imageView;
-    
-    UILabel * _label;
-    NSMutableData *data_;
-    NSString *userid;
-    NSString *nid;
-    NSString *eid;
-    NSString *verify;
-    NSString *Num;
     NSUserDefaults *userDefaults;
-    NSString *urlStr;
-    
     UITableView* _tableView;
-    
-    UILabel* textView;
-    NSMutableString * _string;
-    NSMutableString * _str;
-    
     NSMutableArray *_phoneNums;
-    
+    NSDictionary * markDict;
 }
 @property (strong, nonatomic) DetailViewController *detailViewController;
 @property(strong,nonatomic)id<TelephoneDelegate>Telephonedelegate;
 @property(strong,nonatomic)NSString* Telephone;
 @property(strong,nonatomic)NSMutableDictionary *sectionDic;
 @property(strong,nonatomic)NSArray * keys;
+@property(assign,nonatomic)NSInteger status;
 -(void)messageTelephone:(NSString*)Telephone;
 
 -(void)loadContacts;

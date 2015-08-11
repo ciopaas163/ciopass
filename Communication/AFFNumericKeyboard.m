@@ -18,7 +18,7 @@
         self.bounds = CGRectMake(0, 0, 320, 216);
         self.backgroundColor=[UIColor clearColor];
         //
-        arrLetter = [NSArray arrayWithObjects:@"ABC",@"DEF",@"GHI",@"JKL",@"MNO",@"RST",@"UVW",@"XYZW", nil];
+        arrLetter = [NSArray arrayWithObjects:@"ABC",@"DEF",@"GHI",@"JKL",@"MNO",@"PQRS",@"TUV",@"XYZW", nil];
         
         
         //

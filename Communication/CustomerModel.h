@@ -37,5 +37,5 @@
 @property (nonatomic, strong) NSString *uid;
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic,strong) NSString * contactID;
-
+@property (assign,nonatomic)NSInteger sign;
 @end

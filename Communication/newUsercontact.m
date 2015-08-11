@@ -14,6 +14,7 @@
 #import "JSONKit.h"
 #import "PersonalViewController.h"
 #import "PublicAction.h"
+#import "MasterViewController.h"
 @interface newUsercontact ()
 
 @end
@@ -298,7 +299,9 @@
     NSInteger index=[[self.navigationController viewControllers]indexOfObject:self];
     if (_status==1)
     {
-        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:index-1] animated:YES];
+        MasterViewController * master=(MasterViewController *) [self.navigationController.viewControllers objectAtIndex:index-1];
+        master.status=1;
+        [self.navigationController popToViewController:master animated:YES];
     }else
     {
         PersonalViewController* customer=[self.navigationController.viewControllers objectAtIndex:index-1];
@@ -369,7 +372,7 @@
         if (contact==nil) {
             return 0;
         }
-        NSString* inserSql = [NSString stringWithFormat:@"INSERT INTO %@ (_id,address,fax,department, birthday, mobilePhone, telephone1, telephone2, cid, company, email, ctime , industry, internet, job, name, password, pid , remark , status,uid) VALUES ('%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@')",@"ID_Usercontact",[self getResult:contact._id],[self getResult:contact.address],[self getResult:contact.fax],[self getResult:contact.department],[self getResult:contact.birthday],[self getResult:contact.mobilePhone],[self getResult:contact.telephone1],[self getResult:contact.telephone2],[self getResult:contact.cid],[self getResult:contact.company],[self getResult:contact.email],[self getResult:contact.ctime],[self getResult:contact.industry],[self getResult:contact.internet],[self getResult:contact.job],[self getResult:contact.name],[self getResult:contact.password],[self getResult:contact.pid],[self getResult:contact.remark],[self getResult:contact.status],[self getResult:contact.uid]];
+        NSString* inserSql = [NSString stringWithFormat:@"INSERT INTO %@ (_id,address,fax,department, birthday, mobilePhone, telephone1, telephone2, cid, company, email, ctime , industry, internet, job, name, password, pid , remark , status,uid,sign) VALUES ('%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@')",@"ID_Usercontact",[self getResult:contact._id],[self getResult:contact.address],[self getResult:contact.fax],[self getResult:contact.department],[self getResult:contact.birthday],[self getResult:contact.mobilePhone],[self getResult:contact.telephone1],[self getResult:contact.telephone2],[self getResult:contact.cid],[self getResult:contact.company],[self getResult:contact.email],[self getResult:contact.ctime],[self getResult:contact.industry],[self getResult:contact.internet],[self getResult:contact.job],[self getResult:contact.name],[self getResult:contact.password],[self getResult:contact.pid],[self getResult:contact.remark],[self getResult:contact.status],[self getResult:contact.uid],[self getResult:contact._id]];
         //把数据保存到数据库的@"ID_Enterprise"表里
         BOOL result=[db executeUpdate:inserSql];
         if (result) {
@@ -380,7 +383,7 @@
                 int rowid=[resultSet intForColumnIndex:0];
                 [db close];
                 if (_status==1) {
-                    [PublicAction changeContactType:[NSDictionary dictionaryWithObjectsAndKeys:@"个人",[NSString stringWithFormat:@"%d",rowid], nil]];
+                    [PublicAction changeContactType:[NSDictionary dictionaryWithObjectsAndKeys:@"个人",contact._id, nil]];
                 }
                 [self showMessage];
                 return rowid;

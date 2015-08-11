@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MBProgressHUD.h"
 @interface OrganizationController : UIViewController<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
 
 {
@@ -21,6 +21,8 @@
     //NSString* _enTerpriseID;// 企业标签ID
     NSMutableArray* _employees;//
     NSInteger dataStatus;
+    NSMutableArray *filteredArray;
+    MBProgressHUD *hub;
 }
 
 @property(nonatomic,strong)NSString* Number;

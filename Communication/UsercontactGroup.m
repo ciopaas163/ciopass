@@ -63,8 +63,8 @@
             NSInteger index=[[self.navigationController viewControllers]indexOfObject:self];
             [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:index-1] animated:YES];
             dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                NSDictionary * dict= [self saveContactWithUrl:array];
-                [self updateContactLocalID:dict];
+                NSDictionary * dic= [self saveContactWithUrl:array];
+                [self updateContactLocalID:dic];
             });
         }
     }
@@ -77,12 +77,13 @@
     path=[path stringByAppendingPathComponent:@"commun.db"];
     FMDatabase * db=[FMDatabase databaseWithPath:path];
     NSMutableArray * array=[[NSMutableArray alloc]init];
+    NSMutableDictionary * data=[[NSMutableDictionary alloc]init];
     if ([db open])
     {
         for (int i=0; i<_customerArray.count; i++)
         {
             PersonInfoModel * model=[_customerArray objectAtIndex:i];
-            NSString* inserSql = [NSString stringWithFormat:@"INSERT INTO %@ (name,mobilePhone, telephone1,cid) VALUES ('%@','%@','%@','%@')",@"ID_Usercontact",[self getResult:model.name],[self getResult:model.mobilePhone],[self getResult:model.telephone1],[self getResult:_cid]];
+            NSString* inserSql = [NSString stringWithFormat:@"INSERT INTO %@ (name,mobilePhone, telephone1,cid,sign) VALUES ('%@','%@','%@','%@','%@')",@"ID_Usercontact",[self getResult:model.name],[self getResult:model.mobilePhone],[self getResult:model.telephone1],[self getResult:_cid],[self getResult:model._id]];
             BOOL result= [db executeUpdate:inserSql];
             if (result) {
                 NSString * sql=@"SELECT last_insert_rowid() from ID_Usercontact";
@@ -91,15 +92,12 @@
                 {
                     NSString * rowid=[resultSet stringForColumnIndex:0];
                     [array addObject:rowid];
+                    [data setValue:@"个人" forKey:model._id];
                 }
             }
         }
     }
     [db close];
-    NSMutableDictionary * data=[[NSMutableDictionary alloc]init];
-    for (NSString * key in array) {
-        [data setValue:@"个人" forKey:key];
-    }
     [PublicAction changeContactType:data];
     return [array sortedArrayUsingSelector:@selector(compare:)];
 }
