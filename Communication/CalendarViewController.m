@@ -7,6 +7,7 @@
 //
 
 #import "CalendarViewController.h"
+#import "AddEventViewController.h"
 #import "Header.h"
 #import "Datetime.h"
 #define KSCREENWIDTH  [[UIScreen mainScreen] bounds].size.width
@@ -32,6 +33,11 @@
         UIBarButtonItem * btn=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back.png" ] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
         btn.tintColor=[UIColor whiteColor];
         self.navigationItem.leftBarButtonItem=btn;
+        
+        UIBarButtonItem * right=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"add_btn_white.png" ] style:UIBarButtonItemStylePlain target:self action:@selector(addEvent)];
+        right.tintColor=[UIColor whiteColor];
+        self.navigationItem.rightBarButtonItem=right;
+
         status=0;
         strYear = [[Datetime GetYear] intValue];
         strMonth = [[Datetime GetMonth] intValue];
@@ -48,6 +54,12 @@
 -(void)back
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)addEvent
+{
+    AddEventViewController *addEventVC = [[AddEventViewController alloc] init];
+    [self.navigationController pushViewController:addEventVC animated:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated

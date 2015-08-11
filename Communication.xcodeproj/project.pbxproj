@@ -93,6 +93,8 @@
 		3BE254A31AA98A3C000DB5DF /* KehuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE254991AA98A3C000DB5DF /* KehuModel.m */; };
 		3BE254A41AA98A3C000DB5DF /* Shortmessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE2549B1AA98A3C000DB5DF /* Shortmessage.m */; };
 		3BE254A51AA98A3C000DB5DF /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE2549D1AA98A3C000DB5DF /* MoreViewController.m */; };
+		3BFE22C41B79D4E900BF23E5 /* AddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE22C31B79D4E900BF23E5 /* AddEventViewController.m */; };
+		3BFE22C61B79ED2700BF23E5 /* test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE22C51B79ED2700BF23E5 /* test.xib */; };
 		F809A4FA1B4E225C003DB85F /* 操作记录@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F809A4F51B4E225C003DB85F /* 操作记录@2x.png */; };
 		F809A4FB1B4E225C003DB85F /* 日历@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F809A4F61B4E225C003DB85F /* 日历@2x.png */; };
 		F809A4FC1B4E225C003DB85F /* 日历记录@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F809A4F71B4E225C003DB85F /* 日历记录@2x.png */; };
@@ -542,6 +544,9 @@
 		3BE2549B1AA98A3C000DB5DF /* Shortmessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shortmessage.m; sourceTree = "<group>"; };
 		3BE2549C1AA98A3C000DB5DF /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
 		3BE2549D1AA98A3C000DB5DF /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
+		3BFE22C21B79D4E900BF23E5 /* AddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventViewController.h; sourceTree = "<group>"; };
+		3BFE22C31B79D4E900BF23E5 /* AddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventViewController.m; sourceTree = "<group>"; };
+		3BFE22C51B79ED2700BF23E5 /* test.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = test.xib; sourceTree = "<group>"; };
 		F809A4F51B4E225C003DB85F /* 操作记录@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "操作记录@2x.png"; sourceTree = "<group>"; };
 		F809A4F61B4E225C003DB85F /* 日历@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "日历@2x.png"; sourceTree = "<group>"; };
 		F809A4F71B4E225C003DB85F /* 日历记录@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "日历记录@2x.png"; sourceTree = "<group>"; };
@@ -1871,6 +1876,9 @@
 			children = (
 				F88604D51B662A8B00BC43BF /* CalendarViewController.h */,
 				F88604D61B662A8B00BC43BF /* CalendarViewController.m */,
+				3BFE22C21B79D4E900BF23E5 /* AddEventViewController.h */,
+				3BFE22C31B79D4E900BF23E5 /* AddEventViewController.m */,
+				3BFE22C51B79ED2700BF23E5 /* test.xib */,
 			);
 			name = Control;
 			sourceTree = "<group>";
@@ -2190,6 +2198,7 @@
 				F86A60DD1B573B10003C8A27 /* record_calendar_icon_pru.png in Resources */,
 				F86A60F31B573B10003C8A27 /* tenpay_loading_1.png in Resources */,
 				F83FFE231AA0580000095EB8 /* 未接.png in Resources */,
+				3BFE22C61B79ED2700BF23E5 /* test.xib in Resources */,
 				F880D0531AA9C5F400045B37 /* LOGO@2x.png in Resources */,
 				3BDE48421A9FF78B001901A5 /* DownAccessory.png in Resources */,
 				F82DF0471AB2764C000EA90D /* CalendarcomCell.xib in Resources */,
@@ -2359,6 +2368,7 @@
 				F845D40D1B60955000FA8DD2 /* UIButton+UIButtonImageWithLable.m in Sources */,
 				F896CC2E1AA4611900E7ED30 /* FMDatabaseQueue.m in Sources */,
 				F845D4101B60BAA300FA8DD2 /* PersonInfoModel.m in Sources */,
+				3BFE22C41B79D4E900BF23E5 /* AddEventViewController.m in Sources */,
 				3BDE48671A9FF7B6001901A5 /* QRadioButton.m in Sources */,
 				F83E78421B743F8300BA768B /* UsercontactGroup.m in Sources */,
 				3BDE48841A9FF815001901A5 /* AFNetworkReachabilityManager.m in Sources */,
