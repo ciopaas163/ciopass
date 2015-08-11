@@ -644,7 +644,7 @@
             model.flag = [result stringForColumn:@"flag"];
             model.ctimes = [result stringForColumn:@"ctime"];
             
-            [filteredArray addObject:model];
+            [filteredArray addObject:model];//
         }
     }
     [db close];
