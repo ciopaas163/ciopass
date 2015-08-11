@@ -95,6 +95,8 @@
 		3BE254A51AA98A3C000DB5DF /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE2549D1AA98A3C000DB5DF /* MoreViewController.m */; };
 		3BFE22C41B79D4E900BF23E5 /* AddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE22C31B79D4E900BF23E5 /* AddEventViewController.m */; };
 		3BFE22C61B79ED2700BF23E5 /* test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE22C51B79ED2700BF23E5 /* test.xib */; };
+		3BFE230B1B7A01D400BF23E5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE23091B7A01D400BF23E5 /* Default-568h@2x.png */; };
+		3BFE230C1B7A01D400BF23E5 /* Default@2x 18-09-00-867.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE230A1B7A01D400BF23E5 /* Default@2x 18-09-00-867.png */; };
 		F809A4FA1B4E225C003DB85F /* 操作记录@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F809A4F51B4E225C003DB85F /* 操作记录@2x.png */; };
 		F809A4FB1B4E225C003DB85F /* 日历@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F809A4F61B4E225C003DB85F /* 日历@2x.png */; };
 		F809A4FC1B4E225C003DB85F /* 日历记录@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F809A4F71B4E225C003DB85F /* 日历记录@2x.png */; };
@@ -365,8 +367,6 @@
 		F8BDA5351B4CEEC000B2AE11 /* 向上.png in Resources */ = {isa = PBXBuildFile; fileRef = F8BDA5291B4CEEC000B2AE11 /* 向上.png */; };
 		F8BDA5361B4CEEC000B2AE11 /* 向下.png in Resources */ = {isa = PBXBuildFile; fileRef = F8BDA52A1B4CEEC000B2AE11 /* 向下.png */; };
 		F8BDA5391B4CF38D00B2AE11 /* ZYHMunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BDA5381B4CF38D00B2AE11 /* ZYHMunViewController.m */; };
-		F8D5CC9E1AA410E7007D3C5B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D5CC9C1AA410E7007D3C5B /* Default@2x.png */; };
-		F8D5CC9F1AA410E7007D3C5B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D5CC9D1AA410E7007D3C5B /* Default-568h@2x.png */; };
 		F8D5CCAD1AA43EDD007D3C5B /* 选中2.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D5CCAB1AA43EDD007D3C5B /* 选中2.png */; };
 		F8D5CCAE1AA43EDD007D3C5B /* 未选1.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D5CCAC1AA43EDD007D3C5B /* 未选1.png */; };
 /* End PBXBuildFile section */
@@ -547,6 +547,8 @@
 		3BFE22C21B79D4E900BF23E5 /* AddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventViewController.h; sourceTree = "<group>"; };
 		3BFE22C31B79D4E900BF23E5 /* AddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventViewController.m; sourceTree = "<group>"; };
 		3BFE22C51B79ED2700BF23E5 /* test.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = test.xib; sourceTree = "<group>"; };
+		3BFE23091B7A01D400BF23E5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		3BFE230A1B7A01D400BF23E5 /* Default@2x 18-09-00-867.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x 18-09-00-867.png"; sourceTree = "<group>"; };
 		F809A4F51B4E225C003DB85F /* 操作记录@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "操作记录@2x.png"; sourceTree = "<group>"; };
 		F809A4F61B4E225C003DB85F /* 日历@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "日历@2x.png"; sourceTree = "<group>"; };
 		F809A4F71B4E225C003DB85F /* 日历记录@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "日历记录@2x.png"; sourceTree = "<group>"; };
@@ -851,8 +853,6 @@
 		F8BDA52A1B4CEEC000B2AE11 /* 向下.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "向下.png"; sourceTree = "<group>"; };
 		F8BDA5371B4CF38D00B2AE11 /* ZYHMunViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYHMunViewController.h; sourceTree = "<group>"; };
 		F8BDA5381B4CF38D00B2AE11 /* ZYHMunViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYHMunViewController.m; sourceTree = "<group>"; };
-		F8D5CC9C1AA410E7007D3C5B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		F8D5CC9D1AA410E7007D3C5B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F8D5CCAB1AA43EDD007D3C5B /* 选中2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "选中2.png"; sourceTree = "<group>"; };
 		F8D5CCAC1AA43EDD007D3C5B /* 未选1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未选1.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -948,8 +948,8 @@
 				F880D0521AA9C5F400045B37 /* LOGO@2x.png */,
 				F8D5CCAB1AA43EDD007D3C5B /* 选中2.png */,
 				F8D5CCAC1AA43EDD007D3C5B /* 未选1.png */,
-				F8D5CC9C1AA410E7007D3C5B /* Default@2x.png */,
-				F8D5CC9D1AA410E7007D3C5B /* Default-568h@2x.png */,
+				3BFE23091B7A01D400BF23E5 /* Default-568h@2x.png */,
+				3BFE230A1B7A01D400BF23E5 /* Default@2x 18-09-00-867.png */,
 				F85354411AA144FE00670869 /* Customer@2x.png */,
 				F85354421AA144FE00670869 /* message-helper@2x.png */,
 				F85354431AA144FE00670869 /* mobile-contact@2x.png */,
@@ -2013,6 +2013,7 @@
 				F83FFDF21AA0580000095EB8 /* 密码.png in Resources */,
 				F86A60FB1B573B10003C8A27 /* tenpay_loading_6.png in Resources */,
 				F86A60F71B573B10003C8A27 /* tenpay_loading_2.png in Resources */,
+				3BFE230B1B7A01D400BF23E5 /* Default-568h@2x.png in Resources */,
 				F809A4FE1B4E225C003DB85F /* 设置@2x.png in Resources */,
 				F86A60AC1B573B10003C8A27 /* btn_delet_normal.png in Resources */,
 				F83FFE171AA0580000095EB8 /* 右按下.png in Resources */,
@@ -2132,7 +2133,6 @@
 				F86A60CA1B573B10003C8A27 /* dial_tel_icon@2x.png in Resources */,
 				F83FFE121AA0580000095EB8 /* alert-clock.png in Resources */,
 				F86A60BE1B573B10003C8A27 /* center_system.png in Resources */,
-				F8D5CC9F1AA410E7007D3C5B /* Default-568h@2x.png in Resources */,
 				3BDE48461A9FF78B001901A5 /* UpAccessory@2x.png in Resources */,
 				3BDE48061A9FF6E1001901A5 /* ConverseCell.xib in Resources */,
 				F86A60CF1B573B10003C8A27 /* emotionstore_progresscancelbtn.png in Resources */,
@@ -2162,7 +2162,6 @@
 				F83FFDE31AA0580000095EB8 /* 个人资料页.jpg in Resources */,
 				F8106C1E1AB2D2540015952A /* record_operate_icon_pru.png in Resources */,
 				F809A4FB1B4E225C003DB85F /* 日历@2x.png in Resources */,
-				F8D5CC9E1AA410E7007D3C5B /* Default@2x.png in Resources */,
 				F86A60F41B573B10003C8A27 /* tenpay_loading_10.png in Resources */,
 				F8BDA5311B4CEEC000B2AE11 /* contact-gray@2x.png in Resources */,
 				F82DF04B1AB2939B000EA90D /* 提醒.png in Resources */,
@@ -2191,6 +2190,7 @@
 				F8D5CCAD1AA43EDD007D3C5B /* 选中2.png in Resources */,
 				F83FFE1E1AA0580000095EB8 /* 日历图标.jpg in Resources */,
 				F8347C671AAD489400B9090A /* delete_btn_press.png in Resources */,
+				3BFE230C1B7A01D400BF23E5 /* Default@2x 18-09-00-867.png in Resources */,
 				F86A60FC1B573B10003C8A27 /* tenpay_loading_7.png in Resources */,
 				F8BDA5321B4CEEC000B2AE11 /* contact-blue@2x.png in Resources */,
 				F83FFE241AA0580000095EB8 /* 未选.png in Resources */,
