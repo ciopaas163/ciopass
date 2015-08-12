@@ -393,7 +393,7 @@
     
     if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
         
-        [cell setLayoutMargins:UIEdgeInsetsZero];
+        //[cell setLayoutMargins:UIEdgeInsetsZero];
         
     }
     
@@ -408,7 +408,6 @@
     UIView *view = [UIView new];
     view.backgroundColor = [UIColor clearColor];
     [tableView setTableFooterView:view];
-
 }
 
 -(void)updateMarkLocalData:(CusModel *)sender
