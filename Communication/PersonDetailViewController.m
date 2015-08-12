@@ -451,7 +451,7 @@
     
     if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
         
-        [cell setLayoutMargins:UIEdgeInsetsZero];
+        //[cell setLayoutMargins:UIEdgeInsetsZero];
         
     }
     
