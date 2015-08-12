@@ -20,4 +20,6 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)dialTap:(UIButton *)sender {
+}
 @end

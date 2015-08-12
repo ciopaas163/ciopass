@@ -10,4 +10,11 @@
 
 @interface searchCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *title;
+
+@property (weak, nonatomic) IBOutlet UILabel *subtitle;
+
+@property (weak, nonatomic) IBOutlet UILabel *acctitle;
+
+- (IBAction)dialTap:(UIButton *)sender;
 @end

@@ -18,6 +18,7 @@
 #import "PersonInfoViewController.h"
 #import "pinyin.h"
 #import "POAPinyin.h"
+#import "searchCell.h"
 #define KSCREENWIDTH  [[UIScreen mainScreen] bounds].size.width
 #define KSCRENHEIGHT [[UIScreen mainScreen] bounds].size.height
 @interface OrganizationController ()
@@ -247,12 +248,16 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (filteredArray.count>0)
     {
+        static NSString* Cell = @"searchCell";
+        searchCell* tableCell = [tableView dequeueReusableCellWithIdentifier:Cell];
+        if (tableCell == nil) {
+            tableCell = [[searchCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:Cell];
+        }
         OrganizationModel * model=[filteredArray objectAtIndex:indexPath.row];
-        //tableCell.model = model.username;
-        //tableCell.text=model.position;
-        //tableCell._imgBiao.hidden=YES;
-        //tableCell._tet.hidden=NO;
-        return  nil;
+        tableCell.title.text=model.username;
+        tableCell.subtitle.text=model.mobilePhone;
+        tableCell.acctitle.text=@"公司员工";
+        return  tableCell;
     }else
     {
         static NSString* Cell = @"cell";
@@ -353,7 +358,7 @@
     
     if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
         
-        //[cell setLayoutMargins:UIEdgeInsetsZero];
+        [cell setLayoutMargins:UIEdgeInsetsZero];
         
     }
     

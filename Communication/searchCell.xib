@@ -28,16 +28,32 @@
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rc6-1t-EqN">
                         <rect key="frame" x="203" y="5" width="40" height="40"/>
-                        <state key="normal" title="Button" backgroundImage="dai">
+                        <state key="normal" title="Button" backgroundImage="dial_normal.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <state key="selected" backgroundImage="dial_down.png"/>
+                        <connections>
+                            <action selector="dialTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="txX-aQ-nvv"/>
+                        </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6j-bm-Auc">
+                        <rect key="frame" x="259" y="15" width="53" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="392" y="321"/>
+            <connections>
+                <outlet property="acctitle" destination="a6j-bm-Auc" id="eUf-ff-e7S"/>
+                <outlet property="subtitle" destination="dKR-JU-qQH" id="RcT-gp-eG0"/>
+                <outlet property="title" destination="dKR-JU-qQH" id="jFa-HT-t6W"/>
+            </connections>
+            <point key="canvasLocation" x="523" y="294"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="dai" width="16" height="16"/>
+        <image name="dial_down.png" width="27" height="27"/>
+        <image name="dial_normal.png" width="27" height="27"/>
     </resources>
 </document>
