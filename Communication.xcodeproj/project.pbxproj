@@ -230,6 +230,8 @@
 		F85354481AA144FE00670869 /* mobile-contact@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F85354431AA144FE00670869 /* mobile-contact@2x.png */; };
 		F85354491AA144FE00670869 /* more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F85354441AA144FE00670869 /* more@2x.png */; };
 		F853544A1AA144FE00670869 /* organization@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F85354451AA144FE00670869 /* organization@2x.png */; };
+		F856E5D11B7ACFA600FA92D1 /* searchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F856E5CF1B7ACFA600FA92D1 /* searchCell.m */; };
+		F856E5D21B7ACFA600FA92D1 /* searchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F856E5D01B7ACFA600FA92D1 /* searchCell.xib */; };
 		F85701EF1B58D48500EB5849 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = F85701EE1B58D48500EB5849 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F85701F11B58DB0900EB5849 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F85701F01B58DB0900EB5849 /* CoreTelephony.framework */; };
 		F85701F61B58E8EF00EB5849 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = F85701F31B58E8EF00EB5849 /* README.md */; };
@@ -697,6 +699,9 @@
 		F85354431AA144FE00670869 /* mobile-contact@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mobile-contact@2x.png"; sourceTree = "<group>"; };
 		F85354441AA144FE00670869 /* more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more@2x.png"; sourceTree = "<group>"; };
 		F85354451AA144FE00670869 /* organization@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "organization@2x.png"; sourceTree = "<group>"; };
+		F856E5CE1B7ACFA600FA92D1 /* searchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchCell.h; sourceTree = "<group>"; };
+		F856E5CF1B7ACFA600FA92D1 /* searchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchCell.m; sourceTree = "<group>"; };
+		F856E5D01B7ACFA600FA92D1 /* searchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = searchCell.xib; sourceTree = "<group>"; };
 		F85701ED1B58D48500EB5849 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		F85701EE1B58D48500EB5849 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		F85701F01B58DB0900EB5849 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -1451,6 +1456,9 @@
 				F81E277B1B5CE1E900797DD8 /* PersonInfoCell.m */,
 				F8232C1C1B5DE7BD009F0657 /* CusInfoCell.h */,
 				F8232C1D1B5DE7BD009F0657 /* CusInfoCell.m */,
+				F856E5CE1B7ACFA600FA92D1 /* searchCell.h */,
+				F856E5CF1B7ACFA600FA92D1 /* searchCell.m */,
+				F856E5D01B7ACFA600FA92D1 /* searchCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -2129,6 +2137,7 @@
 				F86A60CA1B573B10003C8A27 /* dial_tel_icon@2x.png in Resources */,
 				F83FFE121AA0580000095EB8 /* alert-clock.png in Resources */,
 				F86A60BE1B573B10003C8A27 /* center_system.png in Resources */,
+				F856E5D21B7ACFA600FA92D1 /* searchCell.xib in Resources */,
 				F8D5CC9F1AA410E7007D3C5B /* Default-568h@2x.png in Resources */,
 				3BDE48461A9FF78B001901A5 /* UpAccessory@2x.png in Resources */,
 				3BDE48061A9FF6E1001901A5 /* ConverseCell.xib in Resources */,
@@ -2309,6 +2318,7 @@
 				3BDE48851A9FF815001901A5 /* AFSecurityPolicy.m in Sources */,
 				3BDE48E61A9FF961001901A5 /* PersonViewTagCell.m in Sources */,
 				3BDE47FD1A9FF6D7001901A5 /* OperateViewCell.m in Sources */,
+				F856E5D11B7ACFA600FA92D1 /* searchCell.m in Sources */,
 				F83065F11B4DFE9400F2A1A8 /* PublicAction.m in Sources */,
 				3BDE489B1A9FF81F001901A5 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				3BDE48491A9FF793001901A5 /* HelpViewController.m in Sources */,
