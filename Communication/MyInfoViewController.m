@@ -15,7 +15,9 @@
 @interface MyInfoViewController ()
 
 @end
-
+/**
+ test
+ */
 @implementation MyInfoViewController
 
 -(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
