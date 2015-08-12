@@ -59,7 +59,7 @@
         [sender setSeparatorInset: UIEdgeInsetsZero];
     }
     if ([sender respondsToSelector:@selector(setLayoutMargins:)]) {
-        [sender setLayoutMargins: UIEdgeInsetsZero];
+        //[sender setLayoutMargins: UIEdgeInsetsZero];
     }
     
 }
