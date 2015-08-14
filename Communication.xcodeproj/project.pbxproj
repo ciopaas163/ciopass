@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BCBB9EE1B7C7C370056CABD /* UUDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCBB9EB1B7C7C370056CABD /* UUDatePicker.m */; };
+		3BCBB9EF1B7C7C370056CABD /* UUDatePicker_DateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCBB9ED1B7C7C370056CABD /* UUDatePicker_DateModel.m */; };
+		3BCBBA3F1B7B3CA40079AF44 /* AddCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCBBA3D1B7B3CA40079AF44 /* AddCalendarViewController.xib */; };
+		3BCF95C31B7DB640004CCA7F /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF95C21B7DB640004CCA7F /* ScheduleViewController.m */; };
+		3BCFC8251B7C2DA80045C71D /* AddCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCBBA3C1B7B3CA40079AF44 /* AddCalendarViewController.m */; };
 		3BDE47681A9FF584001901A5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE47671A9FF584001901A5 /* main.m */; };
 		3BDE476B1A9FF584001901A5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE476A1A9FF584001901A5 /* AppDelegate.m */; };
 		3BDE476E1A9FF584001901A5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE476D1A9FF584001901A5 /* ViewController.m */; };
@@ -93,8 +98,6 @@
 		3BE254A31AA98A3C000DB5DF /* KehuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE254991AA98A3C000DB5DF /* KehuModel.m */; };
 		3BE254A41AA98A3C000DB5DF /* Shortmessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE2549B1AA98A3C000DB5DF /* Shortmessage.m */; };
 		3BE254A51AA98A3C000DB5DF /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE2549D1AA98A3C000DB5DF /* MoreViewController.m */; };
-		3BFE22C41B79D4E900BF23E5 /* AddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE22C31B79D4E900BF23E5 /* AddEventViewController.m */; };
-		3BFE22C61B79ED2700BF23E5 /* test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE22C51B79ED2700BF23E5 /* test.xib */; };
 		3BFE230B1B7A01D400BF23E5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE23091B7A01D400BF23E5 /* Default-568h@2x.png */; };
 		3BFE230C1B7A01D400BF23E5 /* Default@2x 18-09-00-867.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE230A1B7A01D400BF23E5 /* Default@2x 18-09-00-867.png */; };
 		F809A4FA1B4E225C003DB85F /* 操作记录@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F809A4F51B4E225C003DB85F /* 操作记录@2x.png */; };
@@ -382,6 +385,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3BCBB9EA1B7C7C370056CABD /* UUDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUDatePicker.h; sourceTree = "<group>"; };
+		3BCBB9EB1B7C7C370056CABD /* UUDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUDatePicker.m; sourceTree = "<group>"; };
+		3BCBB9EC1B7C7C370056CABD /* UUDatePicker_DateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUDatePicker_DateModel.h; sourceTree = "<group>"; };
+		3BCBB9ED1B7C7C370056CABD /* UUDatePicker_DateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUDatePicker_DateModel.m; sourceTree = "<group>"; };
+		3BCBBA3B1B7B3CA40079AF44 /* AddCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCalendarViewController.h; sourceTree = "<group>"; };
+		3BCBBA3C1B7B3CA40079AF44 /* AddCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCalendarViewController.m; sourceTree = "<group>"; };
+		3BCBBA3D1B7B3CA40079AF44 /* AddCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddCalendarViewController.xib; sourceTree = "<group>"; };
+		3BCF95C11B7DB640004CCA7F /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
+		3BCF95C21B7DB640004CCA7F /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
 		3BDE47621A9FF584001901A5 /* Communication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Communication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BDE47661A9FF584001901A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BDE47671A9FF584001901A5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -544,9 +556,6 @@
 		3BE2549B1AA98A3C000DB5DF /* Shortmessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shortmessage.m; sourceTree = "<group>"; };
 		3BE2549C1AA98A3C000DB5DF /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
 		3BE2549D1AA98A3C000DB5DF /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
-		3BFE22C21B79D4E900BF23E5 /* AddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventViewController.h; sourceTree = "<group>"; };
-		3BFE22C31B79D4E900BF23E5 /* AddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventViewController.m; sourceTree = "<group>"; };
-		3BFE22C51B79ED2700BF23E5 /* test.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = test.xib; sourceTree = "<group>"; };
 		3BFE23091B7A01D400BF23E5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		3BFE230A1B7A01D400BF23E5 /* Default@2x 18-09-00-867.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x 18-09-00-867.png"; sourceTree = "<group>"; };
 		F809A4F51B4E225C003DB85F /* 操作记录@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "操作记录@2x.png"; sourceTree = "<group>"; };
@@ -877,6 +886,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3BCBB9A51B7C56560056CABD /* UUDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				3BCBB9EA1B7C7C370056CABD /* UUDatePicker.h */,
+				3BCBB9EB1B7C7C370056CABD /* UUDatePicker.m */,
+				3BCBB9EC1B7C7C370056CABD /* UUDatePicker_DateModel.h */,
+				3BCBB9ED1B7C7C370056CABD /* UUDatePicker_DateModel.m */,
+			);
+			name = UUDatePicker;
+			sourceTree = "<group>";
+		};
 		3BDE47591A9FF584001901A5 = {
 			isa = PBXGroup;
 			children = (
@@ -1874,11 +1894,14 @@
 		F88604D41B662A6400BC43BF /* Control */ = {
 			isa = PBXGroup;
 			children = (
+				3BCBB9A51B7C56560056CABD /* UUDatePicker */,
 				F88604D51B662A8B00BC43BF /* CalendarViewController.h */,
 				F88604D61B662A8B00BC43BF /* CalendarViewController.m */,
-				3BFE22C21B79D4E900BF23E5 /* AddEventViewController.h */,
-				3BFE22C31B79D4E900BF23E5 /* AddEventViewController.m */,
-				3BFE22C51B79ED2700BF23E5 /* test.xib */,
+				3BCBBA3B1B7B3CA40079AF44 /* AddCalendarViewController.h */,
+				3BCBBA3C1B7B3CA40079AF44 /* AddCalendarViewController.m */,
+				3BCBBA3D1B7B3CA40079AF44 /* AddCalendarViewController.xib */,
+				3BCF95C11B7DB640004CCA7F /* ScheduleViewController.h */,
+				3BCF95C21B7DB640004CCA7F /* ScheduleViewController.m */,
 			);
 			name = Control;
 			sourceTree = "<group>";
@@ -2061,6 +2084,7 @@
 				F83FFE141AA0580000095EB8 /* 下拉.png in Resources */,
 				F89648EF1AB1A38A00F88D1C /* add_btn_white@2x.png in Resources */,
 				F8BDA52C1B4CEEC000B2AE11 /* keyboard-gray@2x.png in Resources */,
+				3BCBBA3F1B7B3CA40079AF44 /* AddCalendarViewController.xib in Resources */,
 				F86A61031B573B10003C8A27 /* title_right_set_icon_press.png in Resources */,
 				F83FFE211AA0580000095EB8 /* 日历常态.png in Resources */,
 				F83FFE261AA0580000095EB8 /* 添加按下.png in Resources */,
@@ -2198,7 +2222,6 @@
 				F86A60DD1B573B10003C8A27 /* record_calendar_icon_pru.png in Resources */,
 				F86A60F31B573B10003C8A27 /* tenpay_loading_1.png in Resources */,
 				F83FFE231AA0580000095EB8 /* 未接.png in Resources */,
-				3BFE22C61B79ED2700BF23E5 /* test.xib in Resources */,
 				F880D0531AA9C5F400045B37 /* LOGO@2x.png in Resources */,
 				3BDE48421A9FF78B001901A5 /* DownAccessory.png in Resources */,
 				F82DF0471AB2764C000EA90D /* CalendarcomCell.xib in Resources */,
@@ -2283,9 +2306,11 @@
 				3BE254841AA98965000DB5DF /* CustomerModel.m in Sources */,
 				3BDE481B1A9FF6F8001901A5 /* MasterCell.m in Sources */,
 				F8232C1A1B5DE55E009F0657 /* CusInfoViewController.m in Sources */,
+				3BCF95C31B7DB640004CCA7F /* ScheduleViewController.m in Sources */,
 				3BE2547C1AA98953000DB5DF /* pilst.m in Sources */,
 				3BE254A31AA98A3C000DB5DF /* KehuModel.m in Sources */,
 				3BE2549F1AA98A3C000DB5DF /* EnterpriseCell.m in Sources */,
+				3BCFC8251B7C2DA80045C71D /* AddCalendarViewController.m in Sources */,
 				3BDE48CD1A9FF893001901A5 /* Newcustomer.m in Sources */,
 				3BDE481D1A9FF6F8001901A5 /* POAPinyin.m in Sources */,
 				3BDE48AA1A9FF833001901A5 /* DialViewController.m in Sources */,
@@ -2326,6 +2351,7 @@
 				F896CC2B1AA4611900E7ED30 /* FMDatabase.m in Sources */,
 				3BDE47EA1A9FF688001901A5 /* TabBarController.m in Sources */,
 				F8232C1E1B5DE7BD009F0657 /* CusInfoCell.m in Sources */,
+				3BCBB9EF1B7C7C370056CABD /* UUDatePicker_DateModel.m in Sources */,
 				F88604D11B662A5500BC43BF /* Datetime.m in Sources */,
 				3BDE48A21A9FF81F001901A5 /* UIWebView+AFNetworking.m in Sources */,
 				F896CC2D1AA4611900E7ED30 /* FMDatabasePool.m in Sources */,
@@ -2368,7 +2394,6 @@
 				F845D40D1B60955000FA8DD2 /* UIButton+UIButtonImageWithLable.m in Sources */,
 				F896CC2E1AA4611900E7ED30 /* FMDatabaseQueue.m in Sources */,
 				F845D4101B60BAA300FA8DD2 /* PersonInfoModel.m in Sources */,
-				3BFE22C41B79D4E900BF23E5 /* AddEventViewController.m in Sources */,
 				3BDE48671A9FF7B6001901A5 /* QRadioButton.m in Sources */,
 				F83E78421B743F8300BA768B /* UsercontactGroup.m in Sources */,
 				3BDE48841A9FF815001901A5 /* AFNetworkReachabilityManager.m in Sources */,
@@ -2379,6 +2404,7 @@
 				F8BDA5391B4CF38D00B2AE11 /* ZYHMunViewController.m in Sources */,
 				F85701F71B58E8EF00EB5849 /* XMLReader.m in Sources */,
 				3BE2547A1AA98953000DB5DF /* DatabaseModel.m in Sources */,
+				3BCBB9EE1B7C7C370056CABD /* UUDatePicker.m in Sources */,
 				3BDE48811A9FF815001901A5 /* AFHTTPRequestOperation.m in Sources */,
 				3BDE48541A9FF7A3001901A5 /* DataController.m in Sources */,
 			);

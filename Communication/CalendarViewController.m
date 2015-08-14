@@ -7,7 +7,8 @@
 //
 
 #import "CalendarViewController.h"
-#import "AddEventViewController.h"
+#import "ScheduleViewController.h"
+#import "AddCalendarViewController.h"
 #import "Header.h"
 #import "Datetime.h"
 #define KSCREENWIDTH  [[UIScreen mainScreen] bounds].size.width
@@ -58,7 +59,8 @@
 
 - (void)addEvent
 {
-    AddEventViewController *addEventVC = [[AddEventViewController alloc] init];
+//    ScheduleViewController *addEventVC = [[ScheduleViewController alloc] init];
+    AddCalendarViewController *addEventVC = [[AddCalendarViewController alloc] init];
     [self.navigationController pushViewController:addEventVC animated:YES];
 }
 
